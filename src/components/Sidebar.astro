@@ -1,54 +1,91 @@
 ---
 const modules = [
-  { name: 'Inicio', href: '/', icon: '🏠' },
-  { name: 'Fundamentos', href: '/fundamentos', icon: '📚' },
-  { name: 'Machine Learning', href: '/machine-learning', icon: '🤖' },
-  { name: 'Computer Vision', href: '/computer-vision', icon: '👁️' },
-  { name: 'NLP', href: '/nlp', icon: '💬' },
-  { name: 'Examen Final', href: '/exam/simulacro', icon: '📝' },
-  { name: 'Recursos', href: '/recursos', icon: '📥' }
+  { 
+    name: 'Inicio', 
+    href: '/', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>` 
+  },
+  { 
+    name: 'Fundamentos', 
+    href: '/fundamentos', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>` 
+  },
+  { 
+    name: 'Machine Learning', 
+    href: '/machine-learning', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>` 
+  },
+  { 
+    name: 'Computer Vision', 
+    href: '/computer-vision', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>` 
+  },
+  { 
+    name: 'NLP', 
+    href: '/nlp', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>` 
+  },
+  { 
+    name: 'Examen Final', 
+    href: '/exam/simulacro', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>` 
+  },
+  { 
+    name: 'Recursos', 
+    href: '/recursos', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>` 
+  }
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<aside class="fixed left-0 top-0 h-screen w-64 bg-[var(--color-bg-secondary)] border-r border-[var(--color-border)] flex flex-col">
-  <div class="p-6 border-b border-[var(--color-border)]">
-    <a href="/" class="flex items-center gap-3">
-      <span class="text-2xl">🎯</span>
+<aside class="fixed left-0 top-0 h-screen w-64 glass border-r border-surface-border flex flex-col z-50">
+  <div class="p-8 border-b border-surface-border">
+    <a href="/" class="flex items-center gap-4 group">
+      <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
       <div>
-        <h2 class="font-bold text-lg">AI-900 Study</h2>
-        <p class="text-sm text-[var(--color-text-secondary)]">Azure AI Fundamentals</p>
+        <h2 class="font-bold text-lg tracking-tight">AI-900</h2>
+        <p class="text-[10px] uppercase tracking-widest text-foreground/50 font-bold">Study Academy</p>
       </div>
     </a>
   </div>
 
-  <nav class="flex-1 p-4">
-    <ul class="space-y-2">
-      {modules.map(module => (
-        <li>
-          <a
-            href={module.href}
-            class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-              currentPath === module.href || currentPath.startsWith(module.href + '/')
-                ? 'bg-primary text-white'
-                : 'hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            <span>{module.icon}</span>
-            <span>{module.name}</span>
-          </a>
-        </li>
-      ))}
+  <nav class="flex-1 p-6 overflow-y-auto">
+    <ul class="space-y-1.5">
+      {modules.map(module => {
+        const isActive = currentPath === module.href || (module.href !== '/' && currentPath.startsWith(module.href));
+        return (
+          <li>
+            <a
+              href={module.href}
+              class={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group relative ${
+                isActive
+                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
+                  : 'hover:bg-primary/5 text-foreground/70 hover:text-primary'
+              }`}
+            >
+              <span class={`${isActive ? 'text-white' : 'text-foreground/40 group-hover:text-primary transition-colors'}`} set:html={module.icon} />
+              <span class="font-medium text-sm">{module.name}</span>
+              {isActive && (
+                <div class="absolute right-2 w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+              )}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   </nav>
 
-  <div class="p-4 border-t border-[var(--color-border)]">
-    <div class="text-sm text-[var(--color-text-secondary)] text-center">
-      Progreso: <span id="progress-text">0%</span>
+  <div class="p-6 border-t border-surface-border bg-surface/30">
+    <div class="flex justify-between items-center mb-2">
+      <span class="text-[10px] font-bold uppercase tracking-wider text-foreground/40">Tu Progreso</span>
+      <span id="progress-text" class="text-xs font-bold text-primary">0%</span>
     </div>
-    <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 mt-2">
-      <div id="progress-bar" class="bg-primary h-2 rounded-full transition-all" style="width: 0%"></div>
+    <div class="w-full bg-surface-border rounded-full h-2 overflow-hidden">
+      <div id="progress-bar" class="bg-gradient-to-r from-primary to-accent h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
     </div>
   </div>
 </aside>
@@ -56,9 +93,17 @@ const currentPath = Astro.url.pathname;
 <script>
   function updateProgress() {
     const progress = localStorage.getItem('ai900-progress') || '0';
-    document.getElementById('progress-bar')?.style.setProperty('width', progress + '%');
-    document.getElementById('progress-text')!.textContent = progress + '%';
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    
+    if (progressBar) progressBar.style.width = progress + '%';
+    if (progressText) progressText.textContent = progress + '%';
   }
+
+  // Handle progress updates
   updateProgress();
   window.addEventListener('storage', updateProgress);
+  
+  // Update on Astro page changes
+  document.addEventListener('astro:after-swap', updateProgress);
 </script>

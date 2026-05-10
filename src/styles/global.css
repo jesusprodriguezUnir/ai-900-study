@@ -1,123 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary: #0078d4;
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f3f4f6;
-  --color-text: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-border: #e5e7eb;
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  
+  --accent: 262 83% 58%;
+  --accent-foreground: 210 40% 98%;
+  
+  --surface: 0 0% 100%;
+  --surface-border: 214 32% 91%;
+  
+  --radius: 0.75rem;
 }
 
 .dark {
-  --color-bg: #0f172a;
-  --color-bg-secondary: #1e293b;
-  --color-text: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-border: #334155;
+  --background: 222 47% 10%;
+  --foreground: 210 20% 90%;
+  
+  --primary: 217 91% 65%;
+  --primary-foreground: 222 47% 11%;
+  
+  --accent: 263 70% 60%;
+  --accent-foreground: 210 40% 98%;
+  
+  --surface: 222 47% 14%;
+  --surface-border: 217 33% 22%;
 }
 
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
 }
 
-.prose {
-  max-width: 65ch;
-  line-height: 1.7;
+@layer components {
+  .glass {
+    @apply bg-surface/70 backdrop-blur-md border border-surface-border;
+  }
+  
+  .glass-dark {
+    @apply bg-surface/40 backdrop-blur-lg border border-white/10;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold 
+           transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-surface border border-surface-border text-foreground px-6 py-3 rounded-xl font-semibold 
+           transition-all duration-300 hover:bg-surface-border/50 hover:scale-[1.02] active:scale-95;
+  }
+
+  .card-premium {
+    @apply glass p-6 rounded-2xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 
+           hover:border-primary/30 relative overflow-hidden dark:bg-surface/60;
+  }
+
+  .prose {
+    @apply max-w-none text-foreground/90 leading-relaxed dark:text-foreground/85;
+  }
+
+  .prose h1 { @apply text-4xl font-bold mb-8 text-foreground dark:text-white; }
+  .prose h2 { @apply text-2xl font-bold mb-6 mt-12 text-foreground/90 dark:text-white/90; }
+  .prose h3 { @apply text-xl font-semibold mb-4 mt-8 text-foreground/90 dark:text-white/90; }
+  .prose p { @apply mb-6; }
+  
+  .quiz-option {
+    @apply flex items-center w-full text-left p-5 border border-surface-border rounded-xl mb-3 
+           transition-all duration-300 hover:border-primary/50 hover:bg-primary/5;
+  }
+
+  .quiz-option.selected {
+    @apply border-primary bg-primary/10 ring-2 ring-primary/20;
+  }
+
+  .quiz-option.correct {
+    @apply border-green-500 bg-green-500/10 text-green-700 dark:text-green-400;
+  }
+
+  .quiz-option.incorrect {
+    @apply border-red-500 bg-red-500/10 text-red-700 dark:text-red-400;
+  }
 }
 
-.prose h1 {
-  @apply text-3xl font-bold mb-6 mt-8;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.prose h2 {
-  @apply text-2xl font-semibold mb-4 mt-6;
+::-webkit-scrollbar-track {
+  @apply bg-background;
 }
 
-.prose h3 {
-  @apply text-xl font-medium mb-3 mt-4;
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-border rounded-full hover:bg-primary/50 transition-colors;
 }
 
-.prose p {
-  @apply mb-4;
-}
-
-.prose ul, .prose ol {
-  @apply mb-4 pl-6;
-}
-
-.prose li {
-  @apply mb-2;
-}
-
-.prose ul {
-  @apply list-disc;
-}
-
-.prose ol {
-  @apply list-decimal;
-}
-
-.prose code {
-  @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm;
-}
-
-.prose pre {
-  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
-}
-
-.prose table {
-  @apply w-full border-collapse mb-4;
-}
-
-.prose th, .prose td {
-  @apply border border-gray-300 dark:border-gray-700 px-4 py-2 text-left;
-}
-
-.prose th {
-  @apply bg-gray-100 dark:bg-gray-800 font-semibold;
-}
-
-.prose blockquote {
-  @apply border-l-4 border-primary pl-4 italic my-4;
-}
-
-.mermaid {
-  @apply my-4 flex justify-center;
-}
-
-.quiz-option {
-  @apply block w-full text-left p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg mb-3 cursor-pointer transition-all;
-}
-
-.quiz-option:hover {
-  @apply border-primary bg-blue-50 dark:bg-blue-900;
-}
-
-.quiz-option.selected {
-  @apply border-primary bg-blue-100 dark:bg-blue-800;
-}
-
-.quiz-option.correct {
-  @apply border-green-500 bg-green-100 dark:bg-green-900;
-}
-
-.quiz-option.incorrect {
-  @apply border-red-500 bg-red-100 dark:bg-red-900;
-}
-
-.resource-card {
-  @apply border-2 border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-primary transition-all;
-}
-
-.btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors;
-}
-
-.btn-secondary {
-  @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors;
+/* View Transitions Support */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
 }
