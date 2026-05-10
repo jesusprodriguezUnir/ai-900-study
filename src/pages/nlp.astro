@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Quiz from '../components/Quiz.vue';
+
+const questions = [
+  {
+    text: "Necesitas analisar la opinión de clientes en reseñas (positiva/negativa). ¿Qué tarea de NLP es la más adecuada?",
+    options: ["Sentiment Analysis", "Entity Recognition", "Key Phrase Extraction", "Language Detection"],
+    correct: 0,
+    explanation: "Sentiment Analysis detecta el sentimiento (positivo/negativo/neutral) en texto."
+  },
+  {
+    text: "De un artículo de noticias quieres extraer nombres de personas, organizaciones y lugares. ¿Qué tarea de NLP necesitas?",
+    options: ["Sentiment Analysis", "Entity Recognition", "Translation", "Language Detection"],
+    correct: 1,
+    explanation: "Entity Recognition extrae entidades específicas como personas, lugares, organizaciones."
+  },
+  {
+    text: "Para entender el significado de palabras, las máquinas usan representaciones numéricas llamadas:",
+    options: ["Tokens", "Sentences", "Syntax", "Embeddings"],
+    correct: 3,
+    explanation: "Los embeddings son vectores numéricos que representan el significado de palabras."
+  },
+  {
+    text: "Un sistema de chatbot necesita entender qué quiere hacer el usuario ('comprar', 'devolver', 'consultar'). ¿Qué concepto de NLP representa esto?",
+    options: ["Entity", "Intent", "Sentiment", "Token"],
+    correct: 1,
+    explanation: "Un Intent (intención) representa lo que el usuario quiere hacer."
+  },
+  {
+    text: "Para procesar texto, el primer paso es dividir el texto en unidades más pequeñas. ¿Cómo se llama este proceso?",
+    options: ["Tokenization", "Translation", "Sentiment Analysis", "Embedding"],
+    correct: 0,
+    explanation: "Tokenization divide el texto en tokens (palabras o sub-palabras)."
+  },
+  {
+    text: "¿Cuál es el servicio de Azure que permite análisis de sentimiento, extracción de entidades y frases clave?",
+    options: ["Azure AI Language (Text Analytics)", "Azure Translator", "QnA Maker", "Azure Speech"],
+    correct: 0,
+    explanation: "Text Analytics proporciona Sentiment Analysis, Entity Recognition y Key Phrase Extraction."
+  },
+  {
+    text: "Para crear un chatbot que entienda las intenciones del usuario (reservar, comprar, preguntar), ¿qué servicio usarías?",
+    options: ["Text Analytics", "Translator", "Azure AI Language (AI Studio/LUIS)", "Speech Services"],
+    correct: 2,
+    explanation: "AI Studio (anteriormente LUIS) está diseñado para entender intenciones e intents."
+  },
+  {
+    text: "Necesitas traduzcir automáticamente contenido de español a inglés en tu app. ¿Qué servicio de Azure usarías?",
+    options: ["Text Analytics", "Azure Translator", "QnA Maker", "Speech Services"],
+    correct: 1,
+    explanation: "Translator es el servicio especializado para traducción entre idiomas."
+  },
+  {
+    text: "Tienes documentos PDF con preguntas frecuentes y quieres crear un chatbot que responda esas preguntas automáticamente. ¿Qué servicio usarías?",
+    options: ["Text Analytics", "Translator", "QnA Maker", "Speech Services"],
+    correct: 2,
+    explanation: "QnA Maker crea bases de conocimiento desde documentos para FAQ bots."
+  },
+  {
+    text: "Para convertir la voz de un usuario en texto (transcripción), ¿qué servicio de Azure es el más apropiado?",
+    options: ["Translator", "QnA Maker", "Text Analytics", "Speech-to-Text (Azure Speech)"],
+    correct: 3,
+    explanation: "Speech-to-Text convierte audio (voz) en texto."
+  }
+];
+---
+
+<Layout title="NLP">
+  <div class="max-w-4xl">
+    <h1 class="text-3xl font-bold mb-6">Módulo 4: NLP (Natural Language Processing)</h1>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Conceptos de NLP</h2>
+
+      <div class="prose">
+        <p>NLP permite a las máquinas procesar y entender el lenguaje humano.</p>
+
+        <h3>Tareas de NLP</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tarea</th>
+              <th>Descripción</th>
+              <th>Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sentiment Analysis</strong></td>
+              <td>Detectar emociones/opiniones</td>
+              <td>¿Es positivo o negativo?</td>
+            </tr>
+            <tr>
+              <td><strong>Entity Recognition</strong></td>
+              <td>Extraer entidades</td>
+              <td>¿Quién, dónde, cuándo?</td>
+            </tr>
+            <tr>
+              <td><strong>Key Phrase Extraction</strong></td>
+              <td>Extraer palabras clave</td>
+              <td>¿De qué trata el texto?</td>
+            </tr>
+            <tr>
+              <td><strong>Translation</strong></td>
+              <td>Traducir idiomas</td>
+              <td>Español → Inglés</td>
+            </tr>
+            <tr>
+              <td><strong>Language Modeling</strong></td>
+              <td>Entender estructura</td>
+              <td>Completar oraciones</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Conceptos Clave</h3>
+        <ul>
+          <li><strong>Tokenization:</strong> Dividir texto en tokens (palabras)</li>
+          <li><strong>Embeddings:</strong> Representaciones numéricas de palabras</li>
+          <li><strong>Intent:</strong> Intención del usuario (reservar, comprar)</li>
+          <li><strong>Entity:</strong> Entidad específica (fecha, lugar, producto)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Servicios de Azure</h2>
+
+      <div class="prose">
+        <h3>Azure AI Language (Text Analytics)</h3>
+        <ul>
+          <li>Sentiment Analysis</li>
+          <li>Entity Recognition</li>
+          <li>Key Phrase Extraction</li>
+          <li>Language Detection</li>
+        </ul>
+
+        <h3>Azure Translator</h3>
+        <ul>
+          <li>Traducción de texto</li>
+          <li>Traducción de documentos</li>
+          <li>Soporte para múltiples idiomas</li>
+        </ul>
+
+        <h3>Azure AI Studio (LUIS)</h3>
+        <ul>
+          <li>Entender intenciones del usuario</li>
+          <li>Crear chatbots conversacionales</li>
+          <li>Reconocimiento de entidades</li>
+        </ul>
+
+        <h3>QnA Maker</h3>
+        <ul>
+          <li>Crear base de conocimiento desde documentos</li>
+          <li>Chatbots de preguntas frecuentes</li>
+          <li>Soporte para PDFs, URLs, documentos</li>
+        </ul>
+
+        <h3>Azure Speech</h3>
+        <ul>
+          <li><strong>Speech-to-Text:</strong> Voz a texto</li>
+          <li><strong>Text-to-Speech:</strong> Texto a voz</li>
+          <li>Transcripción de audio</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Quiz de Práctica</h2>
+      <Quiz client:load questions={questions} moduleId="nlp" />
+    </section>
+  </div>
+</Layout>

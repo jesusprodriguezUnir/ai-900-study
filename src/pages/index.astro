@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Inicio">
+  <div class="max-w-4xl">
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold mb-4">Bienvenido al Curso de Azure AI-900</h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-6">
+        Prepárate para el examen de Azure AI Fundamentals con nuestra plataforma interactiva.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[var(--color-bg-secondary)] p-6 rounded-xl">
+          <div class="text-3xl mb-3">📚</div>
+          <h3 class="font-semibold mb-2">5 Módulos</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">Contenido completo cubriendo todos los temas del examen</p>
+        </div>
+        <div class="bg-[var(--color-bg-secondary)] p-6 rounded-xl">
+          <div class="text-3xl mb-3">🤖</div>
+          <h3 class="font-semibold mb-2">Quizzes Interactivos</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">Practica con preguntas y recibe retroalimentación inmediata</p>
+        </div>
+        <div class="bg-[var(--color-bg-secondary)] p-6 rounded-xl">
+          <div class="text-3xl mb-3">📝</div>
+          <h3 class="font-semibold mb-2">Simulacro Final</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">40 preguntas con timer para simulate el examen real</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Estructura del Curso</h2>
+      <div class="space-y-4">
+        <a href="/fundamentos" class="block p-4 border-2 border-[var(--color-border)] rounded-lg hover:border-primary transition-colors">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold">1. Fundamentos de IA</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">Cargas de trabajo de IA, conceptos de IA responsable</p>
+            </div>
+            <span class="text-primary">→</span>
+          </div>
+        </a>
+        <a href="/machine-learning" class="block p-4 border-2 border-[var(--color-border)] rounded-lg hover:border-primary transition-colors">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold">2. Machine Learning</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">Azure Machine Learning, algoritmos, regressión, clasificación</p>
+            </div>
+            <span class="text-primary">→</span>
+          </div>
+        </a>
+        <a href="/computer-vision" class="block p-4 border-2 border-[var(--color-border)] rounded-lg hover:border-primary transition-colors">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold">3. Computer Vision</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">Visión por computador, imágenes, detección de objetos</p>
+            </div>
+            <span class="text-primary">→</span>
+          </div>
+        </a>
+        <a href="/nlp" class="block p-4 border-2 border-[var(--color-border)] rounded-lg hover:border-primary transition-colors">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold">4. NLP (Procesamiento de Lenguaje Natural)</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">Análisis de texto, traducción, reconocimiento de voz</p>
+            </div>
+            <span class="text-primary">→</span>
+          </div>
+        </a>
+        <a href="/exam/simulacro" class="block p-4 border-2 border-[var(--color-border)] rounded-lg hover:border-primary transition-colors">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold">5. Simulacro de Examen</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">40 preguntas, 60 minutos, modo examen real</p>
+            </div>
+            <span class="text-primary">→</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-4">Recursos Descargables</h2>
+      <p class="mb-4 text-[var(--color-text-secondary)]">Materiales de estudio adicionales para tu preparación</p>
+      <a href="/recursos" class="btn-primary inline-block">Ver Recursos</a>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0078d4;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-text: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+}
+
+.dark {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-border: #334155;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.prose {
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mb-6 mt-8;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mb-4 mt-6;
+}
+
+.prose h3 {
+  @apply text-xl font-medium mb-3 mt-4;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul, .prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose table {
+  @apply w-full border-collapse mb-4;
+}
+
+.prose th, .prose td {
+  @apply border border-gray-300 dark:border-gray-700 px-4 py-2 text-left;
+}
+
+.prose th {
+  @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+
+.mermaid {
+  @apply my-4 flex justify-center;
+}
+
+.quiz-option {
+  @apply block w-full text-left p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg mb-3 cursor-pointer transition-all;
+}
+
+.quiz-option:hover {
+  @apply border-primary bg-blue-50 dark:bg-blue-900;
+}
+
+.quiz-option.selected {
+  @apply border-primary bg-blue-100 dark:bg-blue-800;
+}
+
+.quiz-option.correct {
+  @apply border-green-500 bg-green-100 dark:bg-green-900;
+}
+
+.quiz-option.incorrect {
+  @apply border-red-500 bg-red-100 dark:bg-red-900;
+}
+
+.resource-card {
+  @apply border-2 border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-primary transition-all;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors;
+}

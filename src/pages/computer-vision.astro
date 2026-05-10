@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Quiz from '../components/Quiz.vue';
+
+const questions = [
+  {
+    text: "Necesitas un modelo para clasificar tipos de defectos en vehículos fabricados. Las imágenes son específicas de tu fábrica. ¿Qué servicio usarías?",
+    options: ["Azure AI Vision", "Azure Face", "Azure Custom Vision", "Azure Form Recognizer"],
+    correct: 2,
+    explanation: "Custom Vision permite entrenar un clasificador personalizado con imágenes específicas de tu dominio."
+  },
+  {
+    text: "Quieres extraer el texto de facturas escaneadas para automatizar el procesamiento. ¿Qué servicio es más apropiado?",
+    options: ["Azure AI Vision", "Custom Vision", "Face", "Form Recognizer"],
+    correct: 3,
+    explanation: "Form Recognizer está diseñado específicamente para extraer datos estructurados de documentos como facturas."
+  },
+  {
+    text: "Azure AI Vision tiene modelos preentrenados que pueden analizar cualquier imagen. ¿Cuál es su limitación principal?",
+    options: ["No puede hacer OCR", "No puede adaptarse a dominios específicos", "No puede detectar objetos", "Solo funciona con rostros"],
+    correct: 1,
+    explanation: "Para dominios específicos necesitas Custom Vision que permite entrenar con tus propios datos."
+  },
+  {
+    text: "Para verificar la identidad de un usuario en una app bancaria, ¿qué servicio usarías?",
+    options: ["Azure Face", "Custom Vision", "Form Recognizer", "Azure AI Vision"],
+    correct: 0,
+    explanation: "Azure Face está especializado en detección y análisis de rostros para verificación de identidad."
+  },
+  {
+    text: "¿Cuál es la diferencia principal entre Image Classification y Object Detection?",
+    options: ["Classification es más rápido", "Classification clasifica toda la imagen; Detection encuentra ubicación de objetos", "Detection solo funciona con fotos", "No hay diferencia"],
+    correct: 1,
+    explanation: "Classification asigna una etiqueta a toda la imagen, mientras que Object Detection encuentra la ubicación de objetos específicos."
+  },
+  {
+    text: "Un retailer quiere que los clientes puedan buscar productos subiendo una foto. ¿Qué capacidad necesita?",
+    options: ["Image Classification", "OCR", "Face Detection", "Semantic Segmentation"],
+    correct: 0,
+    explanation: "La búsqueda visual por imagen requiere clasificar la imagen del producto."
+  },
+  {
+    text: "Una empresa de logística quiere monitorear el flujo de vehículos en sus almacenes. ¿Qué capacidad necesitan?",
+    options: ["Image Classification", "Object Detection", "OCR", "Face Detection"],
+    correct: 1,
+    explanation: "Necesitan detectar y contar objetos (vehículos) en las imágenes."
+  },
+  {
+    text: "Para digitalizar contratos antiguos y buscar texto específico en ellos, ¿qué servicio usarías?",
+    options: ["Custom Vision", "Face", "OCR (Azure AI Vision o Form Recognizer)", "Image Classification"],
+    correct: 2,
+    explanation: "OCR permite extraer texto de imágenes escaneadas para búsqueda y procesamiento."
+  },
+  {
+    text: "Una app quiere mostrar descripciones automáticas de imágenes para usuarios ciegos. ¿Qué servicio proporciona esto?",
+    options: ["Azure AI Vision (describe contenido)", "Custom Vision", "Form Recognizer", "Face"],
+    correct: 0,
+    explanation: "Azure AI Vision puede generar descripciones de imágenes automáticamente."
+  },
+  {
+    text: "¿Qué servicio de Azure permite exportar modelos a formato ONNX para usar en dispositivos edge?",
+    options: ["Azure AI Vision", "Custom Vision", "Face", "Form Recognizer"],
+    correct: 1,
+    explanation: "Custom Vision permite exportar modelos entrenados a formatos como ONNX, TensorFlow, CoreML."
+  }
+];
+---
+
+<Layout title="Computer Vision">
+  <div class="max-w-4xl">
+    <h1 class="text-3xl font-bold mb-6">Módulo 3: Computer Vision</h1>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">¿Qué es Computer Vision?</h2>
+
+      <div class="prose">
+        <p>Computer Vision es el campo de la IA que permite a las máquinas "ver" y entender imágenes y vídeos.</p>
+
+        <h3>Tipos de Tareas</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Descripción</th>
+              <th>Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Image Classification</strong></td>
+              <td>Clasificar toda la imagen en una categoría</td>
+              <td>¿Es un gato o un perro?</td>
+            </tr>
+            <tr>
+              <td><strong>Object Detection</strong></td>
+              <td>Encontrar y localizar objetos específicos</td>
+              <td>¿Dónde está el perro?</td>
+            </tr>
+            <tr>
+              <td><strong>Semantic Segmentation</strong></td>
+              <td>Segmentar por categorías a nivel de píxel</td>
+              <td>¿Qué píxeles son calle?</td>
+            </tr>
+            <tr>
+              <td><strong>OCR</strong></td>
+              <td>Extraer texto de imágenes</td>
+              <td>Leer facturas</td>
+            </tr>
+            <tr>
+              <td><strong>Face Detection</strong></td>
+              <td>Detectar y analizar rostros</td>
+              <td>Reconocimiento facial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Servicios de Azure</h2>
+
+      <div class="prose">
+        <h3>Azure AI Vision</h3>
+        <ul>
+          <li>Modelos preentrenados generales</li>
+          <li>Analysis de imágenes, detección de objetos, OCR</li>
+          <li>No requiere entrenamiento</li>
+          <li><strong>Limitación:</strong> No se adapta a dominios específicos</li>
+        </ul>
+
+        <h3>Azure Custom Vision</h3>
+        <ul>
+          <li>Entrenar clasificadores personalizados</li>
+          <li>Para dominios específicos</li>
+          <li>Exportar modelos a ONNX, TensorFlow, CoreML</li>
+          <li>Usar en dispositivos edge</li>
+        </ul>
+
+        <h3>Azure Face</h3>
+        <ul>
+          <li>Detección de rostros</li>
+          <li>Verificación de identidad</li>
+          <li>Reconocimiento facial</li>
+          <li>Detección de emociones</li>
+        </ul>
+
+        <h3>Azure Form Recognizer</h3>
+        <ul>
+          <li>Extraer datos de formularios</li>
+          <td>Pares clave-valor</td>
+          <li>Facturas, receipts, contratos</li>
+          <li>Procesamiento de documentos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Quiz de Práctica</h2>
+      <Quiz client:load questions={questions} moduleId="computer-vision" />
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,64 @@
+---
+const modules = [
+  { name: 'Inicio', href: '/', icon: '🏠' },
+  { name: 'Fundamentos', href: '/fundamentos', icon: '📚' },
+  { name: 'Machine Learning', href: '/machine-learning', icon: '🤖' },
+  { name: 'Computer Vision', href: '/computer-vision', icon: '👁️' },
+  { name: 'NLP', href: '/nlp', icon: '💬' },
+  { name: 'Examen Final', href: '/exam/simulacro', icon: '📝' },
+  { name: 'Recursos', href: '/recursos', icon: '📥' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="fixed left-0 top-0 h-screen w-64 bg-[var(--color-bg-secondary)] border-r border-[var(--color-border)] flex flex-col">
+  <div class="p-6 border-b border-[var(--color-border)]">
+    <a href="/" class="flex items-center gap-3">
+      <span class="text-2xl">🎯</span>
+      <div>
+        <h2 class="font-bold text-lg">AI-900 Study</h2>
+        <p class="text-sm text-[var(--color-text-secondary)]">Azure AI Fundamentals</p>
+      </div>
+    </a>
+  </div>
+
+  <nav class="flex-1 p-4">
+    <ul class="space-y-2">
+      {modules.map(module => (
+        <li>
+          <a
+            href={module.href}
+            class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+              currentPath === module.href || currentPath.startsWith(module.href + '/')
+                ? 'bg-primary text-white'
+                : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            <span>{module.icon}</span>
+            <span>{module.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="p-4 border-t border-[var(--color-border)]">
+    <div class="text-sm text-[var(--color-text-secondary)] text-center">
+      Progreso: <span id="progress-text">0%</span>
+    </div>
+    <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 mt-2">
+      <div id="progress-bar" class="bg-primary h-2 rounded-full transition-all" style="width: 0%"></div>
+    </div>
+  </div>
+</aside>
+
+<script>
+  function updateProgress() {
+    const progress = localStorage.getItem('ai900-progress') || '0';
+    document.getElementById('progress-bar')?.style.setProperty('width', progress + '%');
+    document.getElementById('progress-text')!.textContent = progress + '%';
+  }
+  updateProgress();
+  window.addEventListener('storage', updateProgress);
+</script>

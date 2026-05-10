@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExamMode from '../../components/ExamMode.vue';
+
+const questions = [
+  { text: "Una empresa de retail quiere predecir las ventas del próximo mes basándose en datos históricos. ¿Qué carga de trabajo de IA es la más apropiada?", options: ["Anomaly Detection", "Computer Vision", "Prediction/Forecasting", "NLP"], correct: 2 },
+  { text: "Un banco necesita identificar transacciones fraudulentas, las cuales representan menos del 0.1% de todas las transacciones. ¿Qué carga de trabajo es más adecuada?", options: ["Prediction", "Computer Vision", "NLP", "Anomaly Detection"], correct: 3 },
+  { text: "Una empresa quiere analisar los comentarios de clientes en Twitter para saber si son positivos o negativos. ¿Qué carga de trabajo necesitan?", options: ["Computer Vision", "NLP - Sentiment Analysis", "Conversational AI", "Anomaly Detection"], correct: 1 },
+  { text: "Para extraer texto de facturas escaneadas, ¿qué capacidad de Computer Vision se utiliza?", options: ["Image Classification", "Object Detection", "OCR", "Face Detection"], correct: 2 },
+  { text: "Un hotel necesita un sistema de atención al cliente que responda preguntas frecuentes automáticamente. ¿Qué carga de trabajo necesitan?", options: ["NLP", "Computer Vision", "Conversational AI", "Prediction"], correct: 2 },
+  { text: "Una empresa quiere detectar defectos visuales en productos en una línea de producción. ¿Qué carga de trabajo es más apropiada?", options: ["Prediction", "Computer Vision", "NLP", "Conversational AI"], correct: 1 },
+  { text: "Para identificar grupos de clientes similares sin saber de antemano cuántos grupos existen, ¿qué tipo de tarea de ML se utiliza?", options: ["Clasificación", "Regresión", "Clustering", "Forecasting"], correct: 2 },
+  { text: "Una empresa quiere analisar llamadas de clientes para detectar insatisfacción. ¿Qué combinación de servicios es más apropiada?", options: ["Computer Vision + Translator", "Speech-to-Text + Sentiment Analysis", "OCR + Entity Recognition", "Custom Vision + QnA Maker"], correct: 1 },
+  { text: "Para un sistema de recomendación de productos basado en comportamiento de compra, ¿qué tipo de aprendizaje se utiliza?", options: ["Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Semi-supervised Learning"], correct: 1 },
+  { text: "Una empresa necesita detectar cuando una máquina industrial está funcionando de manera anormal. ¿Qué carga de trabajo es más adecuada?", options: ["Prediction", "Computer Vision", "Anomaly Detection", "NLP"], correct: 2 },
+  { text: "Un sistema de aprobación de créditos discrimina negativamente a personas de ciertas regiones geográficas. ¿Qué principio de IA Responsable se viola?", options: ["Transparency", "Fairness", "Privacy", "Reliability"], correct: 1 },
+  { text: "Una app no informa a los usuarios que están interactuando con un sistema de IA. ¿Qué principio se viola?", options: ["Privacy", "Inclusiveness", "Transparency", "Accountability"], correct: 2 },
+  { text: "Para cumplir con el principio de Privacy, ¿cuál práctica es más importante?", options: ["Usar modelos más precisos", "Minimizar datos recopilados y obtener consentimiento", "Incluir múltiples idiomas", "Documentar todas las decisiones técnicas"], correct: 1 },
+  { text: "Una empresa implementa un sistema de IA sin establecer quién es responsable de las decisiones del sistema. ¿Qué principio se viola?", options: ["Fairness", "Inclusiveness", "Privacy", "Accountability"], correct: 3 },
+  { text: "Para hacer un sistema más inclusivo, ¿cuál acción es más efectiva?", options: ["Usar los datos más precisos posibles", "Documentar todas las decisiones", "Diseñar considerando diferentes capacidades y contextos", "Hacer el modelo más complejo"], correct: 2 },
+  { text: "Un modelo de reconocimiento facial tiene menor precisión para personas de ciertos grupos étnicos. ¿Qué principio se viola?", options: ["Transparency", "Fairness", "Privacy", "Reliability"], correct: 1 },
+  { text: "Una empresa usa datos de usuarios para entrenar modelos sin su consentimiento. ¿Qué principio se viola?", options: ["Fairness", "Privacy", "Inclusiveness", "Reliability"], correct: 1 },
+  { text: "Para cumplir con Reliability, ¿cuál práctica es más importante?", options: ["Usar los datos más diversos posibles", "Probar exhaustivamente y monitorear en producción", "Incluir múltiples idiomas", "Explicar todas las decisiones"], correct: 1 },
+  { text: "Un sistema de IA toma decisiones que afectan a las personas pero no puede explicar por qué tomó esas decisiones. ¿Qué principio se viola?", options: ["Fairness", "Privacy", "Transparency", "Inclusiveness"], correct: 2 },
+  { text: "Para implementar Accountability, ¿cuál de las siguientes prácticas es más importante?", options: ["Usar los datos más precisos disponibles", "Documentar decisiones y tener roles definidos", "Hacer el modelo lo más preciso posible", "Incluir múltiples idiomas en la aplicación"], correct: 1 },
+  { text: "Tienes datos de emails marcados como 'spam' o 'no spam' y quieres entrenar un modelo para clasificarlos. ¿Qué tipo de aprendizaje usas?", options: ["Unsupervised Learning", "Supervised Learning", "Reinforcement Learning", "Semi-supervised Learning"], correct: 1 },
+  { text: "Un modelo tiene 99% de accuracy en datos de entrenamiento pero solo 60% en datos de test. ¿Qué está ocurriendo?", options: ["Underfitting", "Good fit", "Overfitting", "No hay problema"], correct: 2 },
+  { text: "Quieres predecir el precio de una casa basado en metros cuadrados, número de habitaciones y ubicación. ¿Cuál es el 'label' en este ejemplo?", options: ["Metros cuadrados", "Número de habitaciones", "Ubicación", "Precio de la casa"], correct: 3 },
+  { text: "En Azure ML, ¿cuál opción permite crear modelos sin escribir código?", options: ["Azure ML con notebooks", "Azure ML Designer", "Azure CLI", "SDK de Python"], correct: 1 },
+  { text: "AutoML automáticamente realiza todas las siguientes tareas EXCEPTO:", options: ["Selección de algoritmo", "Feature engineering", "Definición del problema de negocio", "Selección de hiperparámetros"], correct: 2 },
+  { text: "En Azure ML, ¿dónde se almacenan todos los recursos (datasets, modelos, experimentos)?", options: ["Azure Storage", "Azure ML Workspace", "Azure Databricks", "Azure Functions"], correct: 1 },
+  { text: "Para predecir valores continuos (como temperatura, precio), ¿qué tipo de tarea de ML se utiliza?", options: ["Clasificación", "Clustering", "Regresión", "Detección de anomalías"], correct: 2 },
+  { text: "Un modelo de ML es demasiado simple y no captura los patrones en los datos. ¿Cómo se llama este problema?", options: ["Overfitting", "Underfitting", "Data leakage", "Good fit"], correct: 1 },
+  { text: "¿Cuál de las siguientes es una técnica para evitar overfitting?", options: ["Usar un modelo más complejo", "Disminuir la cantidad de datos de entrenamiento", "Cross-validation", "Eliminar features importantes"], correct: 2 },
+  { text: "En el pipeline de ML, ¿cuál es el paso donde se eligen las variables relevantes para el modelo?", options: ["Recolección de datos", "Preprocesamiento", "Selección de features", "Despliegue"], correct: 2 },
+  { text: "Para crear un modelo que clasifique tipos de defectos específicos en productos manufactureados, ¿qué servicio usarías?", options: ["Azure AI Vision", "Azure Face", "Azure Custom Vision", "Azure Form Recognizer"], correct: 2 },
+  { text: "Para extraer texto estructurado de facturas (pares clave-valor), ¿qué servicio de Azure es más apropiado?", options: ["Azure AI Vision", "Custom Vision", "Face", "Form Recognizer"], correct: 3 },
+  { text: "Azure AI Vision proporciona capacidades generales preentrenadas. ¿Cuál es su principal limitación?", options: ["No puede hacer OCR", "No puede adaptarse a dominios específicos", "No puede detectar objetos", "Solo funciona con rostros"], correct: 1 },
+  { text: "Para verificar la identidad de un usuario mediante reconocimiento facial en una app bancaria, ¿qué servicio usarías?", options: ["Azure AI Vision", "Custom Vision", "Form Recognizer", "Azure Face"], correct: 3 },
+  { text: "¿Cuál es la diferencia entre Image Classification y Object Detection?", options: ["Classification es más rápido", "Classification clasifica toda la imagen; Detection encuentra ubicación de objetos", "Detection solo funciona con fotos", "No hay diferencia"], correct: 1 },
+  { text: "Para analisar el sentimiento (positivo/negativo) de reseñas de productos, ¿qué servicio de Azure usarías?", options: ["Translator", "QnA Maker", "Text Analytics", "Speech Service"], correct: 2 },
+  { text: "Un chatbot necesita entender las intenciones del usuario ('reservar', 'comprar', 'consultar'). ¿Qué servicio de Azure permite esto?", options: ["Text Analytics", "QnA Maker", "Azure AI Language (AI Studio/LUIS)", "Translator"], correct: 2 },
+  { text: "Para traducir automáticamente contenido de español a inglés, ¿qué servicio de Azure usarías?", options: ["Text Analytics", "Translator", "Speech Services", "QnA Maker"], correct: 1 },
+  { text: "Para crear un chatbot de preguntas frecuentes desde documentos PDF existentes, ¿qué servicio usarías?", options: ["Text Analytics", "Translator", "QnA Maker", "Speech Services"], correct: 2 },
+  { text: "Para convertir la voz de un usuario en texto (transcripción), ¿qué servicio de Azure es más apropiado?", options: ["Translator", "QnA Maker", "Speech-to-Text", "Text Analytics"], correct: 2 }
+];
+---
+
+<Layout title="Simulacro de Examen">
+  <div class="max-w-4xl">
+    <ExamMode client:load questions={questions} />
+  </div>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | AI-900 Study</title>
+  <meta name="description" content="Plataforma de estudio para el examen Azure AI Fundamentals (AI-900)">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script is:inline>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-[var(--color-bg)]">
+  <div class="flex">
+    <Sidebar />
+    <main class="flex-1 ml-64 min-h-screen">
+      <header class="sticky top-0 z-10 bg-[var(--color-bg)] border-b border-[var(--color-border)] px-8 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold">{title}</h1>
+        <ThemeToggle />
+      </header>
+      <div class="p-8">
+        <slot />
+      </div>
+    </main>
+  </div>
+</body>
+</html>
