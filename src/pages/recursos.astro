@@ -1,102 +1,120 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const resources = [
+  {
+    title: "Plan de Estudio 4 Semanas",
+    type: "DOCX",
+    size: "150 KB",
+    desc: "Hoja de ruta estructurada con resúmenes diarios, mapas conceptuales y cronograma para optimizar tu tiempo.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>`,
+    color: "bg-blue-500",
+    href: "/recursos/AI-900_Plan_Estudio_4Semanas.docx"
+  },
+  {
+    title: "Banco de Preguntas Práctica",
+    type: "XLSX",
+    size: "85 KB",
+    desc: "Colección de 110 preguntas tipo examen divididas por dominio, con explicaciones detalladas y niveles de dificultad.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>`,
+    color: "bg-emerald-500",
+    href: "/recursos/AI-900_Preguntas_Practica.xlsx"
+  },
+  {
+    title: "Casos Prácticos de Industria",
+    type: "DOCX",
+    size: "200 KB",
+    desc: "Análisis de 5 escenarios reales donde se aplican servicios de Azure AI para resolver problemas de negocio.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>`,
+    color: "bg-purple-500",
+    href: "/recursos/AI-900_Casos_Practicos.docx"
+  },
+  {
+    title: "Guía de Estudio Oficial",
+    type: "PDF",
+    size: "Microsoft Learn",
+    desc: "Enlace directo a la documentación oficial y rutas de aprendizaje de Microsoft para el examen AI-900.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    color: "bg-orange-500",
+    href: "https://learn.microsoft.com/es-es/certifications/exams/ai-900/",
+    external: true
+  }
+];
 ---
 
 <Layout title="Recursos">
-  <div class="max-w-4xl">
-    <h2 class="text-3xl font-bold mb-6">Recursos Descargables</h2>
-    <p class="text-lg text-foreground/60 mb-8">
-      Materiales de estudio para complementar tu preparación para el examen AI-900.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="resource-card">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="text-4xl">📅</div>
-          <div>
-            <h3 class="font-semibold text-lg">Plan de Estudio 4 Semanas</h3>
-            <p class="text-sm text-foreground/60">Roadmap estructurado</p>
-          </div>
-        </div>
-        <p class="text-sm mb-4">Plan detallado con resúmenes, mapas conceptuales y cronograma de estudio.</p>
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-foreground/60">DOCX • 150 KB</span>
-          <a href="/recursos/AI-900_Plan_Estudio_4Semanas.docx" download class="btn-primary text-sm">Descargar</a>
-        </div>
+  <div class="space-y-16 pb-20">
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden rounded-3xl p-8 md:p-12 bg-surface border border-surface-border shadow-sm">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="relative z-10 max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+          Biblioteca de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Recursos</span>
+        </h1>
+        <p class="text-lg text-foreground/70 leading-relaxed">
+          Todo el material necesario para complementar tu formación. Descarga guías, bancos de preguntas y casos prácticos diseñados por expertos.
+        </p>
       </div>
+    </header>
 
-      <div class="resource-card">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="text-4xl">📊</div>
-          <div>
-            <h3 class="font-semibold text-lg">Banco de Preguntas Práctica</h3>
-            <p class="text-sm text-foreground/60">110 preguntas</p>
+    <!-- Resources Grid -->
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {resources.map(res => (
+          <div class="card-premium flex flex-col group">
+            <div class="flex items-start justify-between mb-6">
+              <div class={`w-12 h-12 rounded-xl flex items-center justify-center ${res.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                <Fragment set:html={res.icon} />
+              </div>
+              <span class="px-3 py-1 bg-surface-border/50 text-[10px] font-bold rounded-full border border-surface-border">
+                {res.type} • {res.size}
+              </span>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{res.title}</h3>
+            <p class="text-sm text-foreground/60 leading-relaxed mb-8 flex-1">
+              {res.desc}
+            </p>
+            
+            <a 
+              href={res.href} 
+              download={!res.external}
+              target={res.external ? "_blank" : undefined}
+              class={`w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 flex items-center justify-center gap-2 ${
+                res.external 
+                  ? "bg-surface border border-surface-border hover:bg-surface-border/50" 
+                  : "bg-primary text-white hover:shadow-lg hover:shadow-primary/25"
+              }`}
+            >
+              {res.external ? (
+                <>
+                  Ver Online
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                </>
+              ) : (
+                <>
+                  Descargar Recurso
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </>
+              )}
+            </a>
           </div>
-        </div>
-        <p class="text-sm mb-4">110 preguntas divididas por dominio, con dificultad y explicaciones detalladas.</p>
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-foreground/60">XLSX • 85 KB</span>
-          <a href="/recursos/AI-900_Preguntas_Practica.xlsx" download class="btn-primary text-sm">Descargar</a>
-        </div>
+        ))}
       </div>
+    </section>
 
-      <div class="resource-card">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="text-4xl">💼</div>
-          <div>
-            <h3 class="font-semibold text-lg">Casos Prácticos</h3>
-            <p class="text-sm text-foreground/60">5 casos de industria</p>
-          </div>
-        </div>
-        <p class="text-sm mb-4">Casos reales con decisiones arquitectónicas y soluciones recomendadas.</p>
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-foreground/60">DOCX • 200 KB</span>
-          <a href="/recursos/AI-900_Casos_Practicos.docx" download class="btn-primary text-sm">Descargar</a>
-        </div>
+    <!-- Extra Help CTA -->
+    <section class="glass p-10 md:p-16 rounded-[3rem] border border-accent/20 relative overflow-hidden text-center">
+      <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </div>
-
-      <div class="resource-card">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="text-4xl">📖</div>
-          <div>
-            <h3 class="font-semibold text-lg">Guía de Estudio Official</h3>
-            <p class="text-sm text-foreground/60">Microsoft Learn</p>
-          </div>
-        </div>
-        <p class="text-sm mb-4">Guía oficial de Microsoft Learn para el examen AI-900.</p>
-        <div class="flex items-center justify-between">
-          <span class="text-sm text-foreground/60">PDF • 2.5 MB</span>
-          <a href="https://learn.microsoft.com/es-es/certifications/exams/ai-900/" target="_blank" rel="noopener" class="btn-secondary text-sm">Ver Online</a>
-        </div>
-      </div>
-    </div>
-
-    <section class="mt-12">
-      <h3 class="text-2xl font-bold mb-4">Contacto</h3>
-      <p class="text-foreground/60 mb-6">
-        Si quieres sugerir mejoras, reportar errores o colaborar en el proyecto, puedes contactarme por estos canales.
+      <h2 class="text-3xl font-bold mb-6">¿Dudas o sugerencias?</h2>
+      <p class="text-lg text-foreground/60 mb-10 max-w-2xl mx-auto">
+        Si crees que falta algún recurso o tienes dudas sobre el contenido, no dudes en contactarme. Estoy aquí para ayudarte a aprobar tu examen.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="mailto:jesusprodriguez@gmail.com" class="block p-4 border-2 border-surface-border rounded-lg hover:border-primary transition-colors">
-          <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-1">Email</p>
-          <p class="font-medium break-all">jesusprodriguez@gmail.com</p>
-        </a>
-
-        <a href="https://wa.me/34670402450" target="_blank" rel="noopener" class="block p-4 border-2 border-surface-border rounded-lg hover:border-primary transition-colors">
-          <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-1">WhatsApp</p>
-          <p class="font-medium">+34 670 40 24 50</p>
-        </a>
-
-        <a href="https://www.linkedin.com/in/jes%C3%BAs-pedro-rodr%C3%ADguez-castro" target="_blank" rel="noopener" class="block p-4 border-2 border-surface-border rounded-lg hover:border-primary transition-colors">
-          <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-1">LinkedIn</p>
-          <p class="font-medium">/in/jesús-pedro-rodríguez-castro</p>
-        </a>
-
-        <a href="https://github.com/jesusprodriguezUnir" target="_blank" rel="noopener" class="block p-4 border-2 border-surface-border rounded-lg hover:border-primary transition-colors">
-          <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-1">GitHub</p>
-          <p class="font-medium">@jesusprodriguezUnir</p>
-        </a>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="mailto:jesusprodriguez@gmail.com" class="btn-primary">Enviar Email</a>
+        <a href="https://wa.me/34670402450" target="_blank" class="btn-secondary">WhatsApp Directo</a>
       </div>
     </section>
   </div>

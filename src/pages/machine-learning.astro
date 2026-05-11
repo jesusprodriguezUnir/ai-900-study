@@ -2,113 +2,164 @@
 import Layout from '../layouts/Layout.astro';
 import Quiz from '../components/Quiz.vue';
 import questions from '../data/questions/machine-learning.json';
+
+const learningTypes = [
+  {
+    title: "Supervised Learning",
+    desc: "El modelo aprende a partir de datos etiquetados que ya contienen las respuestas correctas.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    color: "from-blue-500 to-indigo-500",
+    categories: ["Clasificación (Categorías)", "Regresión (Valores numéricos)"]
+  },
+  {
+    title: "Unsupervised Learning",
+    desc: "El modelo descubre patrones ocultos y estructuras en datos que no tienen etiquetas.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
+    color: "from-purple-500 to-pink-500",
+    categories: ["Clustering (Agrupación)", "Reducción de dimensiones"]
+  },
+  {
+    title: "Reinforcement Learning",
+    desc: "Aprendizaje basado en la interacción con el entorno para maximizar recompensas.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2"/><path d="M18 9h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>`,
+    color: "from-orange-500 to-red-500",
+    categories: ["Prueba y error", "Agentes autónomos"]
+  }
+];
+
+const azureServices = [
+  { name: "Automated ML", desc: "Entrena automáticamente los mejores modelos para tus datos.", icon: "🤖" },
+  { name: "Azure ML Designer", desc: "Interfaz visual de 'arrastrar y soltar' para crear pipelines sin código.", icon: "🎨" },
+  { name: "Data Labeling", desc: "Gestiona proyectos de etiquetado de datos a gran escala.", icon: "🏷️" },
+  { name: "Jupyter Notebooks", desc: "Entorno de desarrollo interactivo para científicos de datos.", icon: "📝" }
+];
 ---
 
 <Layout title="Machine Learning">
-  <div class="max-w-4xl">
-    <h1 class="text-3xl font-bold mb-6">Módulo 2: Machine Learning</h1>
-
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Conceptos Fundamentales</h2>
-
-      <div class="prose">
-        <h3>Tipos de Aprendizaje</h3>
-
-        <h4>1. Supervised Learning (Aprendizaje Supervisado)</h4>
-        <p>El modelo aprende de datos etiquetados (con respuestas correctas).</p>
-        <ul>
-          <li><strong>Clasificación:</strong> Predecir categorías (spam/no spam)</li>
-          <li><strong>Regresión:</strong> Predecir valores continuos (precio)</li>
-        </ul>
-
-        <h4>2. Unsupervised Learning (Aprendizaje No Supervisado)</h4>
-        <p>El modelo encuentra patrones en datos sin etiquetas.</p>
-        <ul>
-          <li><strong>Clustering:</strong> Agrupar datos similares</li>
-          <li><strong>Reducción de dimensionalidad:</strong> Simplificar datos</li>
-        </ul>
-
-        <h4>3. Reinforcement Learning</h4>
-        <p>El modelo aprende por prueba y error, recibiendo recompensas o penalizaciones.</p>
-
-        <h3>Problemas Comunes</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Problema</th>
-              <th>Descripción</th>
-              <th>Solución</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Overfitting</strong></td>
-              <td>Modelo muy complejo, memoriza datos</td>
-              <td>Regularización, más datos, cross-validation</td>
-            </tr>
-            <tr>
-              <td><strong>Underfitting</strong></td>
-              <td>Modelo muy simple, no captura patrones</td>
-              <td>Modelo más complejo, más features</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Conceptos Clave</h3>
-        <ul>
-          <li><strong>Features:</strong> Variables de entrada</li>
-          <li><strong>Label:</strong> Variable a predecir</li>
-          <li><strong>Training data:</strong> Datos para entrenar</li>
-          <li><strong>Test data:</strong> Datos para evaluar</li>
-        </ul>
+  <div class="space-y-16 pb-20">
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden rounded-3xl p-8 md:p-12 bg-surface border border-surface-border shadow-sm">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+      <div class="relative z-10 max-w-2xl">
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider uppercase bg-accent/10 text-accent rounded-full">
+          Módulo 2
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+          Introducción al <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Machine Learning</span>
+        </h1>
+        <p class="text-lg text-foreground/70 leading-relaxed">
+          Aprende cómo las máquinas pueden aprender de los datos para realizar predicciones precisas y descubrir patrones complejos.
+        </p>
       </div>
-    </section>
+    </header>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Azure Machine Learning</h2>
-
-      <div class="prose">
-        <h3>Componentes de Azure ML</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Componente</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Workspace</strong></td>
-              <td>Contenedor principal que organiza todos los recursos</td>
-            </tr>
-            <tr>
-              <td><strong>Designer</strong></td>
-              <td>Interfaz visual para crear modelos sin código</td>
-            </tr>
-            <tr>
-              <td><strong>AutoML</strong></td>
-              <td>Automatiza selección de algoritmos e hiperparámetros</td>
-            </tr>
-            <tr>
-              <td><strong>Notebooks</strong></td>
-              <td>Entorno de código con Jupyter notebooks</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Servicios de Azure AI</h3>
-        <ul>
-          <li><strong>Azure Machine Learning:</strong> Para crear y desplegar modelos personalizados</li>
-          <li><strong>Azure AI Studio:</strong> Plataforma unificada para servicios de IA</li>
-        </ul>
-      </div>
-    </section>
-
+    <!-- Learning Types -->
     <section>
-      <h2 class="text-2xl font-semibold mb-4">Quiz de Práctica</h2>
-      <Quiz client:visible questions={questions} moduleId="machine-learning" />
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Tipos de Aprendizaje</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {learningTypes.map(type => (
+          <div class="card-premium group">
+            <div class={`w-12 h-12 rounded-xl mb-6 flex items-center justify-center bg-gradient-to-br ${type.color} text-white shadow-lg`}>
+              <Fragment set:html={type.icon} />
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{type.title}</h3>
+            <p class="text-foreground/60 text-sm mb-6">{type.desc}</p>
+            <div class="flex flex-wrap gap-2">
+              {type.categories.map(cat => (
+                <span class="px-2 py-1 text-[10px] bg-surface-border/50 rounded-md border border-surface-border font-medium">{cat}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Azure Machine Learning -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Azure Machine Learning</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="glass p-8 rounded-3xl border border-surface-border">
+          <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm">01</span>
+            Capacidades del Servicio
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {azureServices.map(service => (
+              <div class="p-4 rounded-2xl bg-surface/50 border border-surface-border hover:border-primary/20 transition-all group">
+                <div class="text-2xl mb-2">{service.icon}</div>
+                <h4 class="font-bold text-sm mb-1 group-hover:text-primary transition-colors">{service.name}</h4>
+                <p class="text-xs text-foreground/50">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="glass p-8 rounded-3xl border border-surface-border relative overflow-hidden">
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/5 rounded-full blur-2xl"></div>
+          <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-sm">02</span>
+            Métricas y Evaluación
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface/50 transition-colors">
+              <div class="p-2 rounded-lg bg-green-500/10 text-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Precisión (Accuracy)</h4>
+                <p class="text-xs text-foreground/50">Porcentaje de predicciones correctas sobre el total.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface/50 transition-colors">
+              <div class="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Recall / Exhaustividad</h4>
+                <p class="text-xs text-foreground/50">Capacidad de encontrar todos los casos positivos reales.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface/50 transition-colors">
+              <div class="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">R² (Coeficiente de determinación)</h4>
+                <p class="text-xs text-foreground/50">Mide qué tan bien se ajusta el modelo a los datos en regresión.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="pt-10">
+      <div class="glass p-8 md:p-12 rounded-3xl border-2 border-primary/10">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-3xl font-bold mb-2">Comprueba lo aprendido</h2>
+            <p class="text-foreground/60">¿Estás listo para el examen? Pon a prueba tus conocimientos sobre ML.</p>
+          </div>
+          <div class="px-6 py-2 bg-primary/10 text-primary rounded-full font-bold text-sm border border-primary/20">
+            {questions.length} Preguntas
+          </div>
+        </div>
+        
+        <Quiz client:visible questions={questions} moduleId="machine-learning" />
+      </div>
     </section>
   </div>
 </Layout>

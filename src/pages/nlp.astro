@@ -2,112 +2,140 @@
 import Layout from '../layouts/Layout.astro';
 import Quiz from '../components/Quiz.vue';
 import questions from '../data/questions/nlp.json';
+
+const nlpTasks = [
+  {
+    title: "Sentiment Analysis",
+    desc: "Analiza texto para determinar si el tono es positivo, negativo o neutro.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>`,
+    color: "from-blue-500 to-indigo-500"
+  },
+  {
+    title: "Entity Recognition",
+    desc: "Identifica y clasifica entidades en el texto (personas, lugares, fechas, etc.).",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>`,
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    title: "Key Phrase Extraction",
+    desc: "Extrae automáticamente los conceptos principales y frases clave de un texto.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.51a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>`,
+    color: "from-orange-500 to-amber-500"
+  },
+  {
+    title: "Translation",
+    desc: "Traducción fluida de texto entre más de 100 idiomas y dialectos.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>`,
+    color: "from-emerald-500 to-teal-500"
+  },
+  {
+    title: "Speech Processing",
+    desc: "Conversión de voz a texto y texto a voz con voces neuronales realistas.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>`,
+    color: "from-rose-500 to-pink-500"
+  }
+];
+
+const azureLanguageServices = [
+  { name: "Azure AI Language", desc: "Servicio unificado para análisis de texto y comprensión.", icon: "💬" },
+  { name: "Azure AI Translator", desc: "Traducción automática en tiempo real.", icon: "🌐" },
+  { name: "Azure AI Speech", desc: "Reconocimiento y síntesis de voz avanzada.", icon: "🎙️" },
+  { name: "Conversational Language Understanding", desc: "Crea modelos para entender intenciones en bots.", icon: "🧠" }
+];
 ---
 
 <Layout title="NLP">
-  <div class="max-w-4xl">
-    <h1 class="text-3xl font-bold mb-6">Módulo 4: NLP (Natural Language Processing)</h1>
-
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Conceptos de NLP</h2>
-
-      <div class="prose">
-        <p>NLP permite a las máquinas procesar y entender el lenguaje humano.</p>
-
-        <h3>Tareas de NLP</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Tarea</th>
-              <th>Descripción</th>
-              <th>Ejemplo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Sentiment Analysis</strong></td>
-              <td>Detectar emociones/opiniones</td>
-              <td>¿Es positivo o negativo?</td>
-            </tr>
-            <tr>
-              <td><strong>Entity Recognition</strong></td>
-              <td>Extraer entidades</td>
-              <td>¿Quién, dónde, cuándo?</td>
-            </tr>
-            <tr>
-              <td><strong>Key Phrase Extraction</strong></td>
-              <td>Extraer palabras clave</td>
-              <td>¿De qué trata el texto?</td>
-            </tr>
-            <tr>
-              <td><strong>Translation</strong></td>
-              <td>Traducir idiomas</td>
-              <td>Español → Inglés</td>
-            </tr>
-            <tr>
-              <td><strong>Language Modeling</strong></td>
-              <td>Entender estructura</td>
-              <td>Completar oraciones</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Conceptos Clave</h3>
-        <ul>
-          <li><strong>Tokenization:</strong> Dividir texto en tokens (palabras)</li>
-          <li><strong>Embeddings:</strong> Representaciones numéricas de palabras</li>
-          <li><strong>Intent:</strong> Intención del usuario (reservar, comprar)</li>
-          <li><strong>Entity:</strong> Entidad específica (fecha, lugar, producto)</li>
-        </ul>
+  <div class="space-y-16 pb-20">
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden rounded-3xl p-8 md:p-12 bg-surface border border-surface-border shadow-sm">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+      <div class="relative z-10 max-w-2xl">
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider uppercase bg-orange-500/10 text-orange-600 rounded-full">
+          Módulo 4
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+          Procesamiento de <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Lenguaje Natural</span>
+        </h1>
+        <p class="text-lg text-foreground/70 leading-relaxed">
+          Descubre cómo la IA puede entender, interpretar y generar lenguaje humano para crear experiencias más naturales.
+        </p>
       </div>
-    </section>
+    </header>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Servicios de Azure</h2>
-
-      <div class="prose">
-        <h3>Azure AI Language (Text Analytics)</h3>
-        <ul>
-          <li>Sentiment Analysis</li>
-          <li>Entity Recognition</li>
-          <li>Key Phrase Extraction</li>
-          <li>Language Detection</li>
-        </ul>
-
-        <h3>Azure Translator</h3>
-        <ul>
-          <li>Traducción de texto</li>
-          <li>Traducción de documentos</li>
-          <li>Soporte para múltiples idiomas</li>
-        </ul>
-
-        <h3>Azure AI Studio (LUIS)</h3>
-        <ul>
-          <li>Entender intenciones del usuario</li>
-          <li>Crear chatbots conversacionales</li>
-          <li>Reconocimiento de entidades</li>
-        </ul>
-
-        <h3>QnA Maker</h3>
-        <ul>
-          <li>Crear base de conocimiento desde documentos</li>
-          <li>Chatbots de preguntas frecuentes</li>
-          <li>Soporte para PDFs, URLs, documentos</li>
-        </ul>
-
-        <h3>Azure Speech</h3>
-        <ul>
-          <li><strong>Speech-to-Text:</strong> Voz a texto</li>
-          <li><strong>Text-to-Speech:</strong> Texto a voz</li>
-          <li>Transcripción de audio</li>
-        </ul>
-      </div>
-    </section>
-
+    <!-- NLP Tasks -->
     <section>
-      <h2 class="text-2xl font-semibold mb-4">Quiz de Práctica</h2>
-      <Quiz client:visible questions={questions} moduleId="nlp" />
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Tareas de Lenguaje</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {nlpTasks.map(task => (
+          <div class="card-premium group">
+            <div class={`w-12 h-12 rounded-xl mb-6 flex items-center justify-center bg-gradient-to-br ${task.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+              <Fragment set:html={task.icon} />
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{task.title}</h3>
+            <p class="text-foreground/60 text-sm leading-relaxed">{task.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Key Concepts -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="glass p-8 rounded-3xl border border-surface-border">
+        <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Conceptos Fundamentales
+        </h3>
+        <div class="space-y-6">
+          <div class="p-5 rounded-2xl bg-surface/50 border border-surface-border hover:border-orange-500/20 transition-all">
+            <h4 class="font-bold mb-2">Tokenization</h4>
+            <p class="text-sm text-foreground/50">Dividir el texto en unidades más pequeñas llamadas tokens (palabras o subpalabras).</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-surface/50 border border-surface-border hover:border-orange-500/20 transition-all">
+            <h4 class="font-bold mb-2">Word Embeddings</h4>
+            <p class="text-sm text-foreground/50">Representaciones numéricas de palabras donde términos similares están cerca en un espacio vectorial.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-surface/50 border border-surface-border hover:border-orange-500/20 transition-all">
+            <h4 class="font-bold mb-2">NLU (comprensión) vs NLG (generación)</h4>
+            <p class="text-sm text-foreground/50">NLU se enfoca en entender el significado, mientras que NLG se enfoca en crear texto coherente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl border border-surface-border bg-orange-500/5">
+        <h3 class="text-2xl font-bold mb-8">Servicios en Azure</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {azureLanguageServices.map(service => (
+            <div class="p-6 rounded-2xl bg-surface border border-surface-border shadow-sm hover:shadow-md transition-all group">
+              <div class="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+              <h4 class="font-bold text-sm mb-2 group-hover:text-orange-600 transition-colors">{service.name}</h4>
+              <p class="text-xs text-foreground/50 leading-relaxed">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="pt-10">
+      <div class="glass p-8 md:p-12 rounded-3xl border-2 border-orange-500/10">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-3xl font-bold mb-2">Comprueba lo aprendido</h2>
+            <p class="text-foreground/60">Demuestra tu conocimiento sobre NLP y los servicios de lenguaje de Azure.</p>
+          </div>
+          <div class="px-6 py-2 bg-orange-500/10 text-orange-600 rounded-full font-bold text-sm border border-orange-500/20">
+            {questions.length} Preguntas
+          </div>
+        </div>
+        
+        <Quiz client:visible questions={questions} moduleId="nlp" />
+      </div>
     </section>
   </div>
 </Layout>

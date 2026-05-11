@@ -2,108 +2,163 @@
 import Layout from '../layouts/Layout.astro';
 import Quiz from '../components/Quiz.vue';
 import questions from '../data/questions/fundamentos.json';
+
+const workloads = [
+  {
+    title: "Prediction / Forecasting",
+    description: "Utiliza datos históricos para predecir resultados futuros y tendencias numéricas.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m19 20-4-4h-3V5a2 2 0 0 0-2-2 2 2 0 0 0-2 2v12a4 4 0 0 0 4 4h7Z"/><path d="M12 13V5"/><path d="M12 17a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>`,
+    color: "from-blue-500 to-cyan-500",
+    useCases: ["Predecir precios", "Demanda de stock", "Clima"],
+    services: ["Azure Machine Learning", "Azure Synapse"]
+  },
+  {
+    title: "Anomaly Detection",
+    description: "Identifica patrones inusuales o atípicos en los datos que podrían indicar problemas o fraude.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`,
+    color: "from-amber-500 to-orange-500",
+    useCases: ["Detección de fraude", "Monitorización de equipos"],
+    services: ["Azure Anomaly Detector"]
+  },
+  {
+    title: "Computer Vision",
+    description: "Capacidad de la IA para procesar y analizar imágenes y vídeos como lo haría un humano.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M2 10V6a2 2 0 0 1 2-2h4"/><path d="M22 10V6a2 2 0 0 0-2-2h-4"/><path d="M2 14v4a2 2 0 0 0 2 2h4"/><path d="M22 14v4a2 2 0 0 1-2 2h-4"/><circle cx="12" cy="12" r="3"/><path d="M3 12h7"/><path d="M14 12h7"/></svg>`,
+    color: "from-emerald-500 to-teal-500",
+    useCases: ["Image Classification", "Object Detection", "OCR", "Face Detection"],
+    services: ["Azure AI Vision", "Custom Vision", "Face"]
+  },
+  {
+    title: "NLP",
+    description: "Procesamiento de Lenguaje Natural para analizar, comprender y generar texto humano.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7"/><path d="M17 12H7"/></svg>`,
+    color: "from-violet-500 to-purple-500",
+    useCases: ["Análisis de sentimiento", "Traducción", "Resumen"],
+    services: ["Azure Text Analytics", "Translator", "Speech"]
+  },
+  {
+    title: "Conversational AI",
+    description: "Sistemas interactivos que simulan conversaciones humanas mediante chatbots o asistentes de voz.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V5c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v4Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>`,
+    color: "from-pink-500 to-rose-500",
+    useCases: ["Chatbots de soporte", "Asistentes virtuales"],
+    services: ["Azure AI Studio", "Bot Service", "LUIS"]
+  }
+];
+
+const principles = [
+  { name: "Fairness", desc: "Imparcialidad - El sistema no debe discriminar por género, raza u otros factores.", icon: "⚖️" },
+  { name: "Transparency", desc: "Transparencia - Los usuarios deben saber cuándo están interactuando con un sistema de IA.", icon: "🔍" },
+  { name: "Privacy", desc: "Privacidad - Protección de datos personales y obtención de consentimiento explícito.", icon: "🛡️" },
+  { name: "Accountability", desc: "Responsabilidad - Roles y responsabilidades claras sobre las decisiones del sistema.", icon: "👤" },
+  { name: "Inclusiveness", desc: "Inclusividad - Diseño accesible para todas las personas, independientemente de sus capacidades.", icon: "🌍" },
+  { name: "Reliability", desc: "Fiabilidad - Sistemas seguros que han sido probados exhaustivamente.", icon: "✅" }
+];
 ---
 
 <Layout title="Fundamentos de IA">
-  <div class="max-w-4xl">
-    <h1 class="text-3xl font-bold mb-6">Módulo 1: Fundamentos de IA</h1>
-
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Cargas de Trabajo de IA</h2>
-
-      <div class="prose">
-        <h3>¿Qué es una Carga de Trabajo de IA?</h3>
-        <p>Una <strong>carga de trabajo de IA</strong> es un tipo específico de tarea que puede resolverse utilizando técnicas de inteligencia artificial.</p>
-
-        <h3>Tipos de Cargas de Trabajo</h3>
-
-        <h4>1. Prediction / Forecasting</h4>
-        <p>Utiliza datos históricos para predecir resultados futuros.</p>
-        <ul>
-          <li><strong>Cuándo usarla:</strong> Series temporales, predecir valores numéricos</li>
-          <li><strong>Ejemplos:</strong> Predecir precios, demanda, temperaturas</li>
-          <li><strong>Servicios Azure:</strong> Azure Machine Learning, Azure Synapse Analytics</li>
-        </ul>
-
-        <h4>2. Anomaly Detection</h4>
-        <p>Identifica patrones inusuales o atípicos en los datos.</p>
-        <ul>
-          <li><strong>Cuándo usarla:</strong> Datos muy desbalanceados, detección de fraude</li>
-          <li><strong>Ejemplos:</strong> Detección de fraude, monitorización de equipos</li>
-          <li><strong>Servicios Azure:</strong> Azure Anomaly Detector</li>
-        </ul>
-
-        <h4>3. Computer Vision</h4>
-        <p>Procesa y analiza imágenes o vídeos.</p>
-        <ul>
-          <li><strong>Subcategorías:</strong> Image Classification, Object Detection, OCR, Face Detection</li>
-          <li><strong>Servicios Azure:</strong> Azure AI Vision, Custom Vision, Face, Form Recognizer</li>
-        </ul>
-
-        <h4>4. Natural Language Processing (NLP)</h4>
-        <p>Procesa y analiza texto o lenguaje humano.</p>
-        <ul>
-          <li><strong>Subcategorías:</strong> Sentiment Analysis, Entity Recognition, Translation</li>
-          <li><strong>Servicios Azure:</strong> Azure Text Analytics, Translator, Speech</li>
-        </ul>
-
-        <h4>5. Conversational AI</h4>
-        <p>Crea sistemas que interactúan mediante diálogo.</p>
-        <ul>
-          <li><strong>Componentes:</strong> Speech Recognition, NLU, Dialog Management, Speech Synthesis</li>
-          <li><strong>Servicios Azure:</strong> Azure AI Studio, QnA Maker, Bot Service, LUIS</li>
-        </ul>
+  <div class="space-y-16 pb-20">
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden rounded-3xl p-8 md:p-12 bg-surface border border-surface-border shadow-sm">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="relative z-10 max-w-2xl">
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider uppercase bg-primary/10 text-primary rounded-full">
+          Módulo 1
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+          Conceptos Fundamentales de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Inteligencia Artificial</span>
+        </h1>
+        <p class="text-lg text-foreground/70 leading-relaxed">
+          Comprende los pilares básicos de la IA, desde las cargas de trabajo más comunes hasta los principios éticos que rigen su desarrollo responsable.
+        </p>
       </div>
-    </section>
+    </header>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">IA Responsable</h2>
-
-      <div class="prose">
-        <p>La IA Responsable es un enfoque para desarrollar y usar la IA de manera ética y segura. Los principios fundamentales son:</p>
-
-        <h3>Los 6 Principios de IA Responsable</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Principio</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Fairness</strong></td>
-              <td>Imparcialidad - El sistema no debe discriminar</td>
-            </tr>
-            <tr>
-              <td><strong>Transparency</strong></td>
-              <td>Transparencia - Los usuarios deben saber que interactúan con IA</td>
-            </tr>
-            <tr>
-              <td><strong>Privacy</strong></td>
-              <td>Privacidad - Proteger datos personales y obtener consentimiento</td>
-            </tr>
-            <tr>
-              <td><strong>Accountability</strong></td>
-              <td>Responsabilidad - Roles claros sobre las decisiones del sistema</td>
-            </tr>
-            <tr>
-              <td><strong>Inclusiveness</strong></td>
-              <td>Inclusividad - Diseñar para todas las personas</td>
-            </tr>
-            <tr>
-              <td><strong>Reliability</strong></td>
-              <td>Fiabilidad - Probar exhaustivamente y monitorear en producción</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
+    <!-- Workloads Grid -->
     <section>
-      <h2 class="text-2xl font-semibold mb-4">Quiz de Práctica</h2>
-      <Quiz client:visible questions={questions} moduleId="fundamentos" />
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Cargas de Trabajo de IA</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {workloads.map((item) => (
+          <div class="card-premium group">
+            <div class={`w-12 h-12 rounded-xl mb-6 flex items-center justify-center bg-gradient-to-br ${item.color} text-white shadow-lg`}>
+              <Fragment set:html={item.icon} />
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
+            <p class="text-foreground/70 text-sm mb-6 line-clamp-3">{item.description}</p>
+            
+            <div class="space-y-4">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-foreground/40 block mb-2">Casos de Uso</span>
+                <div class="flex flex-wrap gap-2">
+                  {item.useCases.map(u => (
+                    <span class="px-2 py-1 text-[10px] bg-surface-border/50 rounded-md border border-surface-border">{u}</span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-foreground/40 block mb-2">Servicios Azure</span>
+                <div class="flex flex-wrap gap-2">
+                  {item.services.map(s => (
+                    <span class="px-2 py-1 text-[10px] bg-primary/5 text-primary font-medium rounded-md border border-primary/10">{s}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Responsible AI -->
+    <section class="relative">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">IA Responsable</h2>
+      </div>
+
+      <div class="bg-surface border border-surface-border rounded-3xl p-8 md:p-12 mb-8 overflow-hidden relative">
+        <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p class="text-lg text-foreground/80 mb-10 max-w-3xl leading-relaxed">
+          Microsoft ha definido seis principios éticos para guiar el desarrollo y despliegue de sistemas de IA, asegurando que sean beneficiosos y seguros para todos.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {principles.map(p => (
+            <div class="glass p-6 rounded-2xl border border-surface-border hover:border-accent/30 transition-all duration-300 group">
+              <div class="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">{p.icon}</div>
+              <h4 class="text-lg font-bold mb-2 text-foreground group-hover:text-accent transition-colors">{p.name}</h4>
+              <p class="text-sm text-foreground/60 leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="pt-10">
+      <div class="glass p-8 md:p-12 rounded-3xl border-2 border-primary/10">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-3xl font-bold mb-2">Comprueba lo aprendido</h2>
+            <p class="text-foreground/60">Pon a prueba tus conocimientos sobre los fundamentos de IA con este quiz interactivo.</p>
+          </div>
+          <div class="px-6 py-2 bg-primary/10 text-primary rounded-full font-bold text-sm border border-primary/20">
+            {questions.length} Preguntas
+          </div>
+        </div>
+        
+        <Quiz client:visible questions={questions} moduleId="fundamentos" />
+      </div>
     </section>
   </div>
 </Layout>
