@@ -3,11 +3,11 @@
     <div v-if="!examStarted" class="text-center py-12">
       <div class="text-6xl mb-6">📝</div>
       <h2 class="text-2xl font-bold mb-4">Simulacro de Examen AI-900</h2>
-      <p class="text-lg text-[var(--color-text-secondary)] mb-6 max-w-xl mx-auto">
+      <p class="text-lg text-foreground/60 mb-6 max-w-xl mx-auto">
         Este simulacro contiene 40 preguntas que cubren todos los dominios del examen.
         Dispones de 60 minutos para completarlo.
       </p>
-      <div class="bg-[var(--color-bg-secondary)] p-6 rounded-lg mb-6 max-w-md mx-auto">
+      <div class="bg-surface p-6 rounded-lg mb-6 max-w-md mx-auto">
         <ul class="text-left space-y-2">
           <li>📋 <strong>40 preguntas</strong></li>
           <li>⏱️ <strong>60 minutos</strong></li>
@@ -21,9 +21,9 @@
     </div>
 
     <div v-else-if="!showResults" class="space-y-6">
-      <div class="flex items-center justify-between bg-[var(--color-bg-secondary)] p-4 rounded-lg">
+      <div class="flex items-center justify-between bg-surface p-4 rounded-lg">
         <div class="flex items-center gap-4">
-          <span class="text-sm text-[var(--color-text-secondary)]">
+          <span class="text-sm text-foreground/60">
             Pregunta {{ currentIndex + 1 }} de {{ questions.length }}
           </span>
           <div class="flex gap-2 flex-wrap">
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="bg-[var(--color-bg-secondary)] p-6 rounded-lg">
+      <div class="bg-surface p-6 rounded-lg">
         <p class="text-lg font-medium">{{ currentQuestion.text }}</p>
       </div>
 
@@ -83,12 +83,12 @@
       <h3 class="text-2xl font-bold mb-4">Resultados del Examen</h3>
 
       <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-[var(--color-bg-secondary)] p-4 rounded-lg">
-          <p class="text-sm text-[var(--color-text-secondary)]">Puntuación</p>
+        <div class="bg-surface p-4 rounded-lg">
+          <p class="text-sm text-foreground/60">Puntuación</p>
           <p class="text-2xl font-bold">{{ score }}/{{ questions.length }}</p>
         </div>
-        <div class="bg-[var(--color-bg-secondary)] p-4 rounded-lg">
-          <p class="text-sm text-[var(--color-text-secondary)]">Porcentaje</p>
+        <div class="bg-surface p-4 rounded-lg">
+          <p class="text-sm text-foreground/60">Porcentaje</p>
           <p class="text-2xl font-bold" :class="passed ? 'text-green-500' : 'text-red-500'">
             {{ Math.round((score / questions.length) * 100) }}%
           </p>
@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 
 interface Question {
   text: string;
@@ -178,7 +178,7 @@ function nextOrFinish() {
 
 function finishExam() {
   stopTimer();
-  score.value = answers.value.filter((a, q) => a === props.questions[answers.value.indexOf(a)].correct).length;
+  score.value = answers.value.filter((a, index) => a === props.questions[index].correct).length;
   showResults.value = true;
 
   const examHistory = JSON.parse(localStorage.getItem('ai900-exam-history') || '[]');

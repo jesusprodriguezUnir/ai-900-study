@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Tienes datos de transacciones de tarjetas de crédito donde cada transacción está marcada como 'fraude' o 'no fraude'. ¿Qué tipo de aprendizaje es más adecuado?",
+    "options": ["Supervised Learning (Clasificación)", "Unsupervised Learning", "Reinforcement Learning", "Semi-Supervised Learning"],
+    "correct": 0,
+    "explanation": "Cuando tenemos datos etiquetados (fraude/no fraude), usamos aprendizaje supervisado para clasificación."
+  },
+  {
+    "text": "Un modelo predice perfectamente en los datos de entrenamiento (99% accuracy) pero solo 55% en datos nuevos. ¿Qué está ocurriendo?",
+    "options": ["Underfitting", "Good fit", "Overfitting", "El modelo está perfecto"],
+    "correct": 2,
+    "explanation": "Overfitting ocurre cuando el modelo memoriza los datos de entrenamiento y no generaliza a datos nuevos."
+  },
+  {
+    "text": "Quieres identificar grupos de clientes similares sin saber de antemano cuántos grupos existen. ¿Qué técnica usas?",
+    "options": ["Clasificación", "Regresión", "Clustering", "Forecasting"],
+    "correct": 2,
+    "explanation": "Clustering es una técnica no supervisada para encontrar grupos naturales en los datos."
+  },
+  {
+    "text": "En un modelo predictivo de precios de casas, ¿cuál de las siguientes es un 'feature'?",
+    "options": ["Metros cuadrados", "Precio de la casa", "El modelo entrenado", "La precisión del modelo"],
+    "correct": 0,
+    "explanation": "Los features son las variables de entrada (metros cuadrados, habitaciones, etc.) que usamos para predecir el label (precio)."
+  },
+  {
+    "text": "Un modelo de ML es demasiado simple y no captura los patrones en los datos. ¿Cómo se llama este problema?",
+    "options": ["Underfitting", "Overfitting", "Data leakage", "Good fit"],
+    "correct": 0,
+    "explanation": "Underfitting ocurre cuando el modelo es demasiado simple para capturar los patrones relevantes."
+  },
+  {
+    "text": "¿Cuál de las siguientes opciones permite crear modelos de ML sin escribir código en Azure?",
+    "options": ["Azure ML Notebooks", "Azure ML Designer", "Azure CLI", "SDK de Python"],
+    "correct": 1,
+    "explanation": "Azure ML Designer es una interfaz visual drag-and-drop que permite crear modelos sin código."
+  },
+  {
+    "text": "AutoML en Azure ML automatiza todo EXCEPTO:",
+    "options": ["Selección de algoritmo", "Feature engineering", "Definición del problema de negocio", "Selección de hiperparámetros"],
+    "correct": 2,
+    "explanation": "AutoML automatiza la parte técnica, pero tú debes definir qué problema de negocio quieres resolver."
+  },
+  {
+    "text": "¿Qué tipo de tarea de ML usarías para predecir la temperatura de los próximos 7 días?",
+    "options": ["Clasificación", "Clustering", "Regresión (Series Temporales)", "Detección de anomalías"],
+    "correct": 2,
+    "explanation": "Predecir valores continuos (temperatura) es una tarea de regresión, especialmente cuando implica series temporales."
+  },
+  {
+    "text": "En Azure ML, ¿dónde se almacenan los recursos como datasets, modelos y experimentos?",
+    "options": ["Azure Storage Blob", "Azure SQL Database", "Azure ML Workspace", "Azure Container Registry"],
+    "correct": 2,
+    "explanation": "El Workspace es el contenedor principal que organiza todos los recursos de Azure ML."
+  },
+  {
+    "text": "¿Cuál es la principal ventaja de AutoML sobre el entrenamiento manual?",
+    "options": ["Automatiza la selección del mejor algoritmo e hiperparámetros", "Siempre produce modelos más precisos", "No requiere datos de entrenamiento", "Funciona sin conexión a internet"],
+    "correct": 0,
+    "explanation": "AutoML prueba múltiples algoritmos y configuraciones automáticamente para encontrar el mejor modelo."
+  }
+]

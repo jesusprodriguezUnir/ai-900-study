@@ -92,7 +92,29 @@ const currentPath = Astro.url.pathname;
 
 <script>
   function updateProgress() {
-    const progress = localStorage.getItem('ai900-progress') || '0';
+    const modules = ['fundamentos', 'machine-learning', 'computer-vision', 'nlp'];
+    const moduleProgress = JSON.parse(localStorage.getItem('ai900-module-progress') || '{}');
+    const examHistory = JSON.parse(localStorage.getItem('ai900-exam-history') || '[]');
+    
+    let completedCount = 0;
+    
+    // Count completed learning modules
+    modules.forEach(id => {
+      if (moduleProgress[id] && moduleProgress[id].completed) {
+        completedCount++;
+      }
+    });
+    
+    // Check if exam is passed (at least once)
+    const examPassed = examHistory.some((exam: any) => exam.passed);
+    if (examPassed) {
+      completedCount++;
+    }
+    
+    // Total items = 4 modules + 1 exam = 5
+    const totalItems = modules.length + 1;
+    const progress = Math.round((completedCount / totalItems) * 100);
+    
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
     
@@ -102,8 +124,15 @@ const currentPath = Astro.url.pathname;
 
   // Handle progress updates
   updateProgress();
+  
+  // Storage event only fires between different windows/tabs
   window.addEventListener('storage', updateProgress);
   
-  // Update on Astro page changes
+  // Custom event for same-window updates (we'll trigger this in Quiz/Exam components if possible, 
+  // but for now, let's also update on page load/navigation)
+  document.addEventListener('astro:page-load', updateProgress);
   document.addEventListener('astro:after-swap', updateProgress);
+
+  // Poll for changes occasionally as a fallback for same-window localStorage changes
+  setInterval(updateProgress, 2000);
 </script>

@@ -24,6 +24,7 @@ Comandos principales:
 - `src/components/`: componentes Astro y Vue
 - `src/layouts/Layout.astro`: layout principal, carga de tema y estilos globales
 - `src/styles/global.css`: tokens visuales y clases reutilizables
+- `src/data/questions/`: banco de preguntas en archivos JSON (externalizados)
 
 Archivos de referencia rapida:
 
@@ -36,7 +37,7 @@ Archivos de referencia rapida:
 
 - Mantener contenido, rutas y copy en espanol.
 - Nombres de componentes en PascalCase; variables en camelCase.
-- Para componentes Vue en paginas Astro, usar directiva de hidratacion (ejemplo: `client:load`) cuando se requiera interactividad.
+- Para componentes Vue en paginas Astro, usar directiva de hidratacion (ejemplo: `client:visible` para componentes al final de la pagina, `client:load` solo para paginas dedicadas)
 - Mantener consistencia visual con variables CSS existentes (`--color-*`) y utilidades actuales.
 - Evitar refactors grandes no solicitados: aplicar cambios minimos y puntuales.
 
@@ -62,7 +63,7 @@ Siempre ejecutar al menos:
 ## Pitfalls conocidos
 
 - Cualquier archivo nuevo en `src/pages/` crea una ruta publica automaticamente.
-- El contenido de preguntas esta embebido en varios `.astro`; evita duplicacion innecesaria al editar bancos de preguntas.
+- El contenido de preguntas esta externalizado en `src/data/questions/*.json`; editar archivos JSON para modificar bancos de preguntas.
 - La UI depende de variables CSS y clases utilitarias compartidas; no mezclar esquemas de color fuera del sistema actual sin solicitud explicita.
 
 ## Estilo de colaboracion esperado para agentes

@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Una empresa de comercio electrónico quiere predecir la demanda de productos para los próximos 3 meses. ¿Qué carga de trabajo debe utilizar?",
+    "options": ["Anomaly Detection", "Prediction/Forecasting", "Computer Vision", "NLP"],
+    "correct": 1,
+    "explanation": "La predicción de demanda es un caso clásico de forecasting, donde se usan datos históricos para predecir valores futuros."
+  },
+  {
+    "text": "Un banco necesita detectar transacciones fraudulentas. Las transacciones sospechosas representan solo el 0.05% del total. ¿Qué carga de trabajo es más adecuada?",
+    "options": ["Anomaly Detection", "Prediction", "Conversational AI", "Computer Vision"],
+    "correct": 0,
+    "explanation": "Cuando hay datos muy desbalanceados con pocas instancias de interés (anomalías), Anomaly Detection es la opción correcta."
+  },
+  {
+    "text": "Una empresa quiere analisar los tweets de sus clientes para saber si son positivos o negativos. ¿Qué carga de trabajo utiliza?",
+    "options": ["Computer Vision", "Anomaly Detection", "NLP - Sentiment Analysis", "Prediction"],
+    "correct": 2,
+    "explanation": "El análisis de sentimientos es una tarea de NLP que procesa texto para detectar opiniones y emociones."
+  },
+  {
+    "text": "Un hotel quiere un chatbot para atender reservas y preguntas frecuentes. ¿Qué carga de trabajo necesita?",
+    "options": ["NLP", "Computer Vision", "Conversational AI", "Anomaly Detection"],
+    "correct": 2,
+    "explanation": "Los chatbots y asistentes virtuales son ejemplos de Conversational AI."
+  },
+  {
+    "text": "Para extraer texto de facturas escaneadas, ¿qué carga de trabajo se utiliza?",
+    "options": ["NLP", "Prediction", "Computer Vision (OCR)", "Conversational AI"],
+    "correct": 2,
+    "explanation": "OCR (Optical Character Recognition) es una capacidad de Computer Vision que extrae texto de imágenes."
+  },
+  {
+    "text": "Un sistema de IA discrimina por género en las decisiones de contratación. ¿Qué principio se viola?",
+    "options": ["Transparency", "Fairness", "Privacy", "Reliability"],
+    "correct": 1,
+    "explanation": "Fairness (imparcialidad) se viola cuando el sistema discrimina por género u otras características protegidas."
+  },
+  {
+    "text": "Una aplicación no informa a los usuarios que utiliza IA para tomar decisiones sobre ellos. ¿Qué principio se viola?",
+    "options": ["Transparency", "Privacy", "Inclusiveness", "Reliability"],
+    "correct": 0,
+    "explanation": "Transparency requiere que los usuarios sepan cuándo interactúan con sistemas de IA."
+  },
+  {
+    "text": "Para cumplir con Privacy, ¿cuál práctica es más importante?",
+    "options": ["Minimizar datos recopilados y obtener consentimiento", "Usar los modelos más precisos", "Incluir múltiples idiomas", "Documentar todas las decisiones técnicas"],
+    "correct": 0,
+    "explanation": "Privacy se basa en recopilar solo datos necesarios y obtener consentimiento claro."
+  },
+  {
+    "text": "Una empresa implementa IA sin establecer quién es responsable de las decisiones del sistema. ¿Qué principio se viola?",
+    "options": ["Fairness", "Inclusiveness", "Privacy", "Accountability"],
+    "correct": 3,
+    "explanation": "Accountability requiere que haya roles y responsabilidades claras sobre el sistema de IA."
+  },
+  {
+    "text": "Para hacer un sistema más inclusivo, ¿cuál acción es más efectiva?",
+    "options": ["Usar los datos más precisos posibles", "Documentar todas las decisiones", "Diseñar considerando diferentes capacidades y contextos", "Hacer el modelo más complejo"],
+    "correct": 2,
+    "explanation": "Inclusiveness significa diseñar para todas las personas, considerando discapacidades, idiomas, y contextos diversos."
+  }
+]

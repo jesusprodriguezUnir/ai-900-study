@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Necesitas analisar la opinión de clientes en reseñas (positiva/negativa). ¿Qué tarea de NLP es la más adecuada?",
+    "options": ["Sentiment Analysis", "Entity Recognition", "Key Phrase Extraction", "Language Detection"],
+    "correct": 0,
+    "explanation": "Sentiment Analysis detecta el sentimiento (positivo/negativo/neutral) en texto."
+  },
+  {
+    "text": "De un artículo de noticias quieres extraer nombres de personas, organizaciones y lugares. ¿Qué tarea de NLP necesitas?",
+    "options": ["Sentiment Analysis", "Entity Recognition", "Translation", "Language Detection"],
+    "correct": 1,
+    "explanation": "Entity Recognition extrae entidades específicas como personas, lugares, organizaciones."
+  },
+  {
+    "text": "Para entender el significado de palabras, las máquinas usan representaciones numéricas llamadas:",
+    "options": ["Tokens", "Sentences", "Syntax", "Embeddings"],
+    "correct": 3,
+    "explanation": "Los embeddings son vectores numéricos que representan el significado de palabras."
+  },
+  {
+    "text": "Un sistema de chatbot necesita entender qué quiere hacer el usuario ('comprar', 'devolver', 'consultar'). ¿Qué concepto de NLP representa esto?",
+    "options": ["Entity", "Intent", "Sentiment", "Token"],
+    "correct": 1,
+    "explanation": "Un Intent (intención) representa lo que el usuario quiere hacer."
+  },
+  {
+    "text": "Para procesar texto, el primer paso es dividir el texto en unidades más pequeñas. ¿Cómo se llama este proceso?",
+    "options": ["Tokenization", "Translation", "Sentiment Analysis", "Embedding"],
+    "correct": 0,
+    "explanation": "Tokenization divide el texto en tokens (palabras o sub-palabras)."
+  },
+  {
+    "text": "¿Cuál es el servicio de Azure que permite análisis de sentimiento, extracción de entidades y frases clave?",
+    "options": ["Azure AI Language (Text Analytics)", "Azure Translator", "QnA Maker", "Azure Speech"],
+    "correct": 0,
+    "explanation": "Text Analytics proporciona Sentiment Analysis, Entity Recognition y Key Phrase Extraction."
+  },
+  {
+    "text": "Para crear un chatbot que entienda las intenciones del usuario (reservar, comprar, preguntar), ¿qué servicio usarías?",
+    "options": ["Text Analytics", "Translator", "Azure AI Language (AI Studio/LUIS)", "Speech Services"],
+    "correct": 2,
+    "explanation": "AI Studio (anteriormente LUIS) está diseñado para entender intenciones e intents."
+  },
+  {
+    "text": "Necesitas traduzcir automáticamente contenido de español a inglés en tu app. ¿Qué servicio de Azure usarías?",
+    "options": ["Text Analytics", "Azure Translator", "QnA Maker", "Speech Services"],
+    "correct": 1,
+    "explanation": "Translator es el servicio especializado para traducción entre idiomas."
+  },
+  {
+    "text": "Tienes documentos PDF con preguntas frecuentes y quieres crear un chatbot que responda esas preguntas automáticamente. ¿Qué servicio usarías?",
+    "options": ["Text Analytics", "Translator", "QnA Maker", "Speech Services"],
+    "correct": 2,
+    "explanation": "QnA Maker crea bases de conocimiento desde documentos para FAQ bots."
+  },
+  {
+    "text": "Para convertir la voz de un usuario en texto (transcripción), ¿qué servicio de Azure es el más apropiado?",
+    "options": ["Translator", "QnA Maker", "Text Analytics", "Speech-to-Text (Azure Speech)"],
+    "correct": 3,
+    "explanation": "Speech-to-Text convierte audio (voz) en texto."
+  }
+]
