@@ -40,6 +40,26 @@ const resources = [
     external: true
   }
 ];
+
+const videoResources = [
+  {
+    title: "Curso Completo AI-900",
+    duration: "3h 15m",
+    author: "FreeCodeCamp",
+    desc: "Excelente repaso detallado de todos los dominios del examen en una sola sesión.",
+    url: "https://www.youtube.com/watch?v=ysPbXH0LpIE",
+    thumbnail: "https://img.youtube.com/vi/ysPbXH0LpIE/maxresdefault.jpg"
+  },
+  {
+    title: "Azure AI Fundamentals en 60 min",
+    duration: "58m",
+    author: "John Savill",
+    desc: "Repaso intensivo de conceptos clave justo antes del examen.",
+    url: "https://www.youtube.com/watch?v=OfUn6HjwXhI",
+    thumbnail: "https://img.youtube.com/vi/OfUn6HjwXhI/maxresdefault.jpg"
+  }
+];
+
 ---
 
 <Layout title="Recursos">
@@ -59,6 +79,13 @@ const resources = [
 
     <!-- Resources Grid -->
     <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Documentos y Guías</h2>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {resources.map(res => (
           <div class="card-premium flex flex-col group">
@@ -99,6 +126,41 @@ const resources = [
               )}
             </a>
           </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-600">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
+        </div>
+        <h2 class="text-3xl font-bold">Videos Recomendados</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {videoResources.map(video => (
+          <a href={video.url} target="_blank" rel="noopener" class="group block overflow-hidden rounded-[2rem] bg-surface border border-surface-border hover:border-red-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/5">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="m7 4 12 8-12 8V4z"/></svg>
+                </div>
+              </div>
+              <div class="absolute bottom-4 right-4 px-2 py-1 bg-black/80 text-white text-[10px] font-bold rounded">
+                {video.duration}
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-red-500/10 text-red-600 text-[10px] font-bold rounded uppercase tracking-wider">{video.author}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">{video.title}</h3>
+              <p class="text-sm text-foreground/50 leading-relaxed">{video.desc}</p>
+            </div>
+          </a>
         ))}
       </div>
     </section>

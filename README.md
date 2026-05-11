@@ -1,6 +1,14 @@
-# AI-900 Study (Español)
+# AI-900 Study (Español) - Premium Redesign
 
 Plataforma de estudio para preparar el examen Microsoft Azure AI Fundamentals (AI-900), construida con Astro, Vue y Tailwind CSS.
+
+## 🚀 Novedades: Rediseño Premium
+Recientemente hemos actualizado la plataforma con una estética moderna y funcional:
+- **Glassmorphism UI**: Interfaz limpia con efectos de cristal y desenfoque.
+- **Unified Design System**: Estética coherente en todos los módulos de aprendizaje.
+- **Componentes Interactivos Mejorados**: Simulador de examen y quizzes con mejor feedback visual.
+- **Sección de Videos**: Nueva biblioteca de recursos audiovisuales recomendados.
+- **Optimización Dark Mode**: Experiencia de lectura mejorada para sesiones de estudio nocturnas.
 
 ## Sitio en producción
 
@@ -9,88 +17,41 @@ https://ai-900-study.vercel.app/
 ## Objetivo
 
 Este repositorio contiene una web de estudio con:
-- Contenido teórico por módulos
-- Quiz interactivo por tema
-- Simulacro final tipo examen
-- Seguimiento de progreso en el navegador
+- Contenido teórico por módulos con diseño premium
+- Quiz interactivo por tema con feedback detallado
+- Simulador de examen final (40 preguntas, 60 min)
+- Seguimiento de progreso en tiempo real
+- Recursos descargables y videos recomendados
 
 ## Stack tecnológico
 
-- Astro 5
-- Vue 3
-- Tailwind CSS 3
-- MDX
-
-## Requisitos
-
-- Node.js 18 o superior
-- npm
-
-## Instalación
-
-1. Clonar el repositorio
-2. Instalar dependencias:
-
-npm install
-
-## Comandos disponibles
-
-- npm run dev: Inicia el entorno de desarrollo
-- npm start: Alias de desarrollo
-- npm run build: Genera la versión de producción en la carpeta dist
-- npm run preview: Sirve localmente la build de producción
+- **Astro 5**: Framework principal para una carga ultrarrápida.
+- **Vue 3**: Reactividad para los quizzes y simuladores.
+- **Tailwind CSS 3**: Diseño personalizado y responsive.
+- **Lucide Icons**: Iconografía vectorial premium.
 
 ## Estructura principal
 
-- src/pages: Rutas de la aplicación (Astro file-based routing)
-- src/components: Componentes Astro y Vue
-- src/layouts: Layouts compartidos
-- src/styles: Estilos globales
-- public/recursos: Recursos descargables
+- `src/pages`: Rutas de la aplicación (Astro file-based routing)
+- `src/components`: Componentes Astro y Vue (Quiz, ExamMode, Sidebar, Footer)
+- `src/layouts`: Layouts compartidos con soporte para temas.
+- `src/styles/global.css`: Definición del sistema de diseño premium.
+- `public/recursos`: Recursos descargables (PDF, DOCX, XLSX).
 
 ## Rutas incluidas
 
-- / (Inicio)
-- /fundamentos
-- /machine-learning
-- /computer-vision
-- /nlp
-- /exam/simulacro
-- /recursos
-
-## Persistencia local
-
-La aplicación guarda estado en localStorage con estas claves:
-- theme
-- ai900-progress
-- ai900-module-progress
-- ai900-exam-history
+- `/` (Inicio - Dashboard)
+- `/fundamentos` (IA Responsable y Cargas de trabajo)
+- `/machine-learning` (Modelos y Métricas)
+- `/computer-vision` (Tareas visuales)
+- `/nlp` (Procesamiento de lenguaje)
+- `/exam/simulacro` (Prueba final)
+- `/recursos` (Documentos y Videos)
 
 ## Contacto
 
-- Email: jesusprodriguez@gmail.com
-- WhatsApp: +34 670 40 24 50
-- LinkedIn: https://www.linkedin.com/in/jes%C3%BAs-pedro-rodr%C3%ADguez-castro
-- GitHub: https://github.com/jesusprodriguezUnir
-
-## Convenciones de contenido
-
-- El contenido está en español
-- Mantener consistencia en nombres de rutas y módulos
-- Evitar cambios de estilo fuera del sistema visual definido en src/styles/global.css
-
-## Build y despliegue
-
-1. Ejecutar build:
-
-npm run build
-
-2. Verificar localmente:
-
-npm run preview
-
-La salida para despliegue está en la carpeta dist.
-
-## Licencia
-
-Pendiente de definir.
+Si quieres colaborar o tienes dudas:
+- **Email**: [jesusprodriguez@gmail.com](mailto:jesusprodriguez@gmail.com)
+- **WhatsApp**: [+34 670 40 24 50](https://wa.me/34670402450)
+- **LinkedIn**: [/in/jesús-pedro-rodríguez-castro](https://www.linkedin.com/in/jes%C3%BAs-pedro-rodr%C3%ADguez-castro)
+- **GitHub**: [@jesusprodriguezUnir](https://github.com/jesusprodriguezUnir)
