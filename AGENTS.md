@@ -2,72 +2,69 @@
 
 Guia operativa para agentes de codigo en este repositorio.
 
-## Objetivo del proyecto
+## Objetivo
 
 Plataforma de estudio para AI-900 (Azure AI Fundamentals) con contenido y evaluaciones en espanol.
 
-## Stack y ejecucion
+Contexto funcional y alcance del producto: ver [README.md](README.md).
 
-- Framework: Astro 5
-- UI interactiva: Vue 3 (componentes hidratados)
-- Estilos: Tailwind CSS + variables CSS en `src/styles/global.css`
+## Inicio rapido para agentes
 
-Comandos principales:
+- Stack: Astro 5 + Vue 3 + Tailwind CSS.
+- Desarrollo: `npm run dev` (alias: `npm start`).
+- Verificacion obligatoria antes de cerrar cambios: `npm run build`.
+- Preview de produccion: `npm run preview`.
 
-- `npm run dev` (o `npm start`): desarrollo local
-- `npm run build`: build de produccion
-- `npm run preview`: previsualizar build
+## Mapa minimo del codigo
 
-## Mapa del codigo
+- `src/pages/`: rutas publicas (Astro file-based routing).
+- `src/components/`: componentes Astro y Vue reutilizables.
+- `src/layouts/Layout.astro`: layout principal, SEO base, tema y estructura global.
+- `src/styles/global.css`: tokens visuales y utilidades compartidas.
+- `src/data/questions/*.json`: bancos de preguntas por modulo.
 
-- `src/pages/`: rutas de Astro (file-based routing)
-- `src/components/`: componentes Astro y Vue
-- `src/layouts/Layout.astro`: layout principal, carga de tema y estilos globales
-- `src/styles/global.css`: tokens visuales y clases reutilizables
-- `src/data/questions/`: banco de preguntas en archivos JSON (externalizados)
+Referencias rapidas de patron:
 
-Archivos de referencia rapida:
+- `src/pages/fundamentos.astro`: modulo teorico + quiz hidratado.
+- `src/components/Quiz.vue`: quiz por modulo y persistencia de progreso.
+- `src/components/ExamMode.vue`: simulacro final con temporizador e historial.
+- `src/components/Sidebar.astro`: navegacion y barra de progreso global.
 
-- `src/pages/fundamentos.astro` (patron de pagina de modulo + quiz)
-- `src/components/Quiz.vue` (interaccion de preguntas por modulo)
-- `src/components/ExamMode.vue` (simulacro con temporizador)
-- `src/components/Sidebar.astro` (navegacion + progreso)
-
-## Convenciones del repositorio
+## Convenciones obligatorias
 
 - Mantener contenido, rutas y copy en espanol.
-- Nombres de componentes en PascalCase; variables en camelCase.
-- Para componentes Vue en paginas Astro, usar directiva de hidratacion (ejemplo: `client:visible` para componentes al final de la pagina, `client:load` solo para paginas dedicadas)
-- Mantener consistencia visual con variables CSS existentes (`--color-*`) y utilidades actuales.
-- Evitar refactors grandes no solicitados: aplicar cambios minimos y puntuales.
+- Cambios minimos y puntuales; evitar refactors amplios no solicitados.
+- Componentes en PascalCase; variables y funciones en camelCase.
+- En Astro + Vue, usar hidratacion solo cuando sea necesaria:
+	- `client:visible` para componentes no criticos al inicio.
+	- `client:load` solo para experiencias que deban estar activas desde el primer render.
+- Mantener coherencia visual con tokens y estilos existentes en `src/styles/global.css`.
 
-## Estado y persistencia
+## Estado cliente (localStorage)
 
-La app usa `localStorage` para estado cliente. Claves actuales:
+Claves actuales:
 
 - `theme`
 - `ai900-progress`
 - `ai900-module-progress`
 - `ai900-exam-history`
 
-Si agregas nuevas claves, documenta el nombre y proposito en este archivo.
+Si agregas una nueva clave, documentala aqui (nombre, estructura y proposito).
 
-## Validacion antes de terminar cambios
+## Validacion minima antes de finalizar
 
-Siempre ejecutar al menos:
+1. Ejecutar `npm run build` y resolver errores.
+2. Confirmar que no se rompieron rutas en `src/pages/`.
+3. Si cambias Vue interactivo, validar flujo basico en desarrollo (`npm run dev`).
 
-1. `npm run build`
-2. Revisar que no se rompan rutas de `src/pages/`
-3. Si cambias Vue interactivo, probar flujo basico en `npm run dev`
+## Pitfalls del repositorio
 
-## Pitfalls conocidos
+- Todo archivo nuevo en `src/pages/` crea una ruta publica automaticamente.
+- Los contenidos de evaluacion viven en `src/data/questions/*.json`; editar ahi, no hardcodear preguntas en componentes.
+- El progreso de sidebar depende de `ai900-module-progress` y `ai900-exam-history`.
 
-- Cualquier archivo nuevo en `src/pages/` crea una ruta publica automaticamente.
-- El contenido de preguntas esta externalizado en `src/data/questions/*.json`; editar archivos JSON para modificar bancos de preguntas.
-- La UI depende de variables CSS y clases utilitarias compartidas; no mezclar esquemas de color fuera del sistema actual sin solicitud explicita.
+## Forma de trabajo del agente
 
-## Estilo de colaboracion esperado para agentes
-
-- Explicar brevemente que se va a cambiar antes de editar.
-- Referenciar rutas de archivo especificas en las respuestas.
-- Si hay ambiguedad funcional, preguntar antes de alterar comportamiento.
+- Explicar brevemente el cambio antes de editar.
+- Referenciar rutas concretas en respuestas.
+- Si hay ambiguedad funcional, preguntar antes de cambiar comportamiento.
